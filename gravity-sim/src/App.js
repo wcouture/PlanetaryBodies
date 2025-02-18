@@ -5,20 +5,26 @@ import Canvas from "./Canvas.js";
 import React, { useRef, useState, useEffect } from 'react';
 
 function App() {
-  const drawCircle = (context, pos_x, pos_y) => {
-    console.log("Drawing circle")
-    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-    context.fillStyle = '#000000'
+  const drawCircle = (context, pos_x, pos_y, radius) => {
+    context.fillStyle = '#AAA'
     context.beginPath()
-    context.arc(pos_x, pos_y, 20, 0, 2*Math.PI)
+    context.arc(pos_x, pos_y, radius, 0, 2*Math.PI)
     context.fill()
     context.closePath();
   };
 
+  const clearScreen = (context) => {
+    context.fillStyle = '#000000';
+    context.beginPath()
+    context.rect(0, 0, context.canvas.width, context.canvas.height)
+    context.fill()
+  }
+
 
   return (
     <Canvas 
-    draw={drawCircle}/>
+    drawCircle={drawCircle}
+    clearScreen={clearScreen}/>
   );
 }
 
