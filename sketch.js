@@ -4,7 +4,7 @@ const UNIVERSE_SCALE = 10;
 const G = 0.000000000066743;
 
 
-const DRAW_SCALE = 100000000;
+const DRAW_SCALE = 200000000;
 
 let sun = {
   position: 0,
@@ -15,6 +15,22 @@ let sun = {
 let planets = []
 
 function setup() {
+  let mercury = {
+    position: createVector(0, 108200000000 / UNIVERSE_SCALE, 0),
+    velocity: createVector( 35020 / (UNIVERSE_SCALE / 3), 0, 0),
+    accel: createVector(0,0,0),
+    mass: 4867300000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+    radius: 5,
+    color: [191, 179, 145]
+  }
+  let venus = {
+    position: createVector(0, 108200000000 / UNIVERSE_SCALE, 0),
+    velocity: createVector( 35020 / (UNIVERSE_SCALE / 3), 0, 0),
+    accel: createVector(0,0,0),
+    mass: 4867300000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+    radius: 5,
+    color: [191, 179, 145]
+  }
   let earth = {
     position: createVector(0, 149000000000 / UNIVERSE_SCALE, 0),
     velocity: createVector( 29780 / (UNIVERSE_SCALE / 3), 0, 0),
@@ -31,7 +47,7 @@ function setup() {
     radius: 5,
     color: [161, 91, 67]
   }
-  let venus = {
+  let jupiter = {
     position: createVector(0, 108200000000 / UNIVERSE_SCALE, 0),
     velocity: createVector( 35020 / (UNIVERSE_SCALE / 3), 0, 0),
     accel: createVector(0,0,0),
@@ -39,6 +55,31 @@ function setup() {
     radius: 5,
     color: [191, 179, 145]
   }
+  let saturn = {
+    position: createVector(0, 108200000000 / UNIVERSE_SCALE, 0),
+    velocity: createVector( 35020 / (UNIVERSE_SCALE / 3), 0, 0),
+    accel: createVector(0,0,0),
+    mass: 4867300000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+    radius: 5,
+    color: [191, 179, 145]
+  }
+  let uranus = {
+    position: createVector(0, 108200000000 / UNIVERSE_SCALE, 0),
+    velocity: createVector( 35020 / (UNIVERSE_SCALE / 3), 0, 0),
+    accel: createVector(0,0,0),
+    mass: 4867300000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+    radius: 5,
+    color: [191, 179, 145]
+  }
+  let neptune = {
+    position: createVector(0, 108200000000 / UNIVERSE_SCALE, 0),
+    velocity: createVector( 35020 / (UNIVERSE_SCALE / 3), 0, 0),
+    accel: createVector(0,0,0),
+    mass: 4867300000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+    radius: 5,
+    color: [191, 179, 145]
+  }
+  
 
   planets.push(earth)
   planets.push(mars)
