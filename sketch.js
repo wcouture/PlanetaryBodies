@@ -1,65 +1,129 @@
 const SCREEN_WIDTH = innerWidth;
 const SCREEN_HEIGHT = innerHeight;
-const G = 0.00006;
+const UNIVERSE_SCALE = 10;
+const G = 0.000000000066743;
+
+
+const DRAW_SCALE = 100000000;
 
 let sun = {
-  x: SCREEN_WIDTH/2, y: SCREEN_HEIGHT/2,
-  mass: 1000000,
-  radius: 50
+  position: 0,
+  mass: 2000000000000000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+  radius: 10
 }
 
-let planet = {
-  x: sun.x - 200,
-  y: SCREEN_HEIGHT / 2,
-  velocity: {x: 0, y: 0},
-  mass: 100,
-  radius: 5
+let planets = []
+
+function setup() {
+  let earth = {
+    position: createVector(0, 149000000000 / UNIVERSE_SCALE, 0),
+    velocity: createVector( 29780 / (UNIVERSE_SCALE / 3), 0, 0),
+    accel: createVector(0,0,0),
+    mass: 5972200000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+    radius: 5,
+    color: [0,0,220]
+  }
+  let mars = {
+    position: createVector(0, 225000000000 / UNIVERSE_SCALE, 0),
+    velocity: createVector( 24080 / (UNIVERSE_SCALE / 3), 0, 0),
+    accel: createVector(0,0,0),
+    mass: 639000000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+    radius: 5,
+    color: [161, 91, 67]
+  }
+  let venus = {
+    position: createVector(0, 108200000000 / UNIVERSE_SCALE, 0),
+    velocity: createVector( 35020 / (UNIVERSE_SCALE / 3), 0, 0),
+    accel: createVector(0,0,0),
+    mass: 4867300000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+    radius: 5,
+    color: [191, 179, 145]
+  }
+
+  planets.push(earth)
+  planets.push(mars)
+  planets.push(venus)
+
+  sun.position = createVector(0,0,0)
+
+  createCanvas(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
-function get_distance() {
-  let deltaX_sq = (sun.x - planet.x) * (sun.x - planet.x);
-  let deltaY_sq = (sun.y - planet.y) * (sun.y - planet.y);
-  return sqrt(deltaX_sq + deltaY_sq)
-}
-
-function calculate_acceleration() {
-  let r = get_distance();
+function calculate_acceleration(planet) {
+  let r = planet.position.dist(sun.position)
 
   let accel_mag = sun.mass * G / (r*r);
 
-  let accel_vec = {x: 0, y: 0};
-  let deltaX = (sun.x - planet.x);
+  let accel_vec = createVector(0,0);
+  accel_vec.x = sun.position.x - planet.position.x
+  accel_vec.y = sun.position.y - planet.position.y
+  accel_vec.normalize()
 
-  let angle = acos(deltaX / r);
-  accel_vec.x = cos(angle) * accel_mag;
-  accel_vec.y = sin(angle) * accel_mag;
+  accel_vec.setMag(accel_mag)
 
   return accel_vec;
 }
 
 function update_positions() {
-  let deltaTime = frameCount;
+  for (let i = 0; i < planets.length; i++) {
+    let planet = planets[i]
 
-  let g_accel_vec = calculate_acceleration();
-  planet.velocity.x += g_accel_vec.x;
-  planet.velocity.y += g_accel_vec.y;
-
-  planet.x += planet.velocity.x;
-  planet.y += planet.velocity.y;
+    let g_accel_vec = calculate_acceleration(planet);
+    planet.velocity.x += g_accel_vec.x * deltaTime;
+    planet.velocity.y += g_accel_vec.y * deltaTime;
+  
+    planet.accel.x = g_accel_vec.x;
+    planet.accel.y = g_accel_vec.y;
+  
+    planet.position.x += planet.velocity.x * deltaTime;
+    planet.position.y += planet.velocity.y * deltaTime;
+  }
 }
 
-function setup() {
-  createCanvas(SCREEN_WIDTH, SCREEN_HEIGHT);
+function check_collision() {
+  let planet = planets[0]
+  let distance = planet.position.dist(sun.position);
+  if (distance <= sun.radius + planet.radius) {
+    planet.velocity = {x: 0, y: 0}
+  }
 }
 
 function draw() {
-  update_positions();
+  translate(SCREEN_WIDTH/2,SCREEN_HEIGHT/2);
+  
+  let iterations = 100
+
+  for (let i = 0; i < iterations; i++) {
+    check_collision();
+    update_positions();
+  }
+  
   background(0);
   // Draw sun
   fill(250, 252, 111)
-  circle(sun.x, sun.y, sun.radius * 2)
+  circle(sun.position.x, sun.position.y, sun.radius * 2)
 
-  // Draw planet
-  fill(100,0,255)
-  circle(planet.x, planet.y, planet.radius * 2)
+  // Draw planets
+  for (let i = 0; i < planets.length; i++) {
+    let planet = planets[i]
+    fill(planet.color[0], planet.color[1], planet.color[2])
+    circle(planet.position.x / DRAW_SCALE, planet.position.y / DRAW_SCALE, planet.radius * 2)
+  }
+
+  // let arrow_scale = 1000000
+  // let accel_arrow_scale = 1000000
+  // let velocity = planet.velocity;
+  // let accel = planet.accel;
+
+
+  // push()
+  // stroke(255, 0, 0);
+  // strokeWeight(2);
+  // // Draw velocity
+  // line(planet.position.x / DRAW_SCALE, planet.position.y / DRAW_SCALE, planet.position.x / DRAW_SCALE + velocity.x / DRAW_SCALE * arrow_scale, planet.position.y / DRAW_SCALE + velocity.y / DRAW_SCALE * arrow_scale);
+
+  // // Draw accel line
+  // stroke(0, 255, 0)
+  // line(planet.position.x / DRAW_SCALE, planet.position.y / DRAW_SCALE, planet.position.x / DRAW_SCALE + accel.x * accel_arrow_scale / DRAW_SCALE, planet.position.y / DRAW_SCALE + accel.y * accel_arrow_scale / DRAW_SCALE);
+  // pop()
 }
