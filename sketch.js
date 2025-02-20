@@ -16,10 +16,10 @@ let planets = []
 
 function setup() {
   let mercury = {
-    position: createVector(0, 108200000000 / UNIVERSE_SCALE, 0),
-    velocity: createVector( 35020 / (UNIVERSE_SCALE / 3), 0, 0),
+    position: createVector(0, 55200000000 / UNIVERSE_SCALE, 0),
+    velocity: createVector( 47360 / (UNIVERSE_SCALE / 3), 0, 0),
     accel: createVector(0,0,0),
-    mass: 4867300000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+    mass: 330100000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
     radius: 5,
     color: [191, 179, 145]
   }
@@ -79,11 +79,11 @@ function setup() {
     radius: 5,
     color: [191, 179, 145]
   }
-  
-
+  planets.push(mercury)
+  planets.push(venus)
   planets.push(earth)
   planets.push(mars)
-  planets.push(venus)
+  
 
   sun.position = createVector(0,0,0)
 
