@@ -17,10 +17,16 @@ function init_stars() {
     planet_data.NUM_STARS = random(200, 300)
 }
 
-function init_planets() {
+// Initializes scalar variables used in drawing and updating planets
+function init_scalars() {
     planet_data.DRAW_SCALE = 1100000000
-    planet_data.SPEED_SCALE = 100
+    planet_data.SPEED_SCALE = 1000
     planet_data.UPDATE_ITERATIONS = 10
+}
+
+function init_planets() {
+    init_scalars();
+
     planet_data.planets = []
 
     let mercury = {

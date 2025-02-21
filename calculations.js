@@ -10,8 +10,8 @@ function update_positions() {
       planet.accel.x = 0
       planet.accel.y = 0
 
-      let dT = deltaTime / update_iterations; // Calculates fractional time for subdivided updates
-      for (let u = 0; u < update_iterations; u++) {
+      let dT = deltaTime / planet_data.UPDATE_ITERATIONS; // Calculates fractional time for subdivided updates
+      for (let u = 0; u < planet_data.UPDATE_ITERATIONS; u++) {
 
         // Accumulates accelerations onto velocity for all parent bodies
         for (let j = 0; j < planet.parents.length; j++) {

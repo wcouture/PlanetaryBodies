@@ -75,9 +75,9 @@ function display_planet_details(planet) {
 
 // If hovering over a planet, display planet details
 function draw_hover_details() {
-    if (planet_data.selected_planet.name != "Sun") {
-        return;
-    }
+    // if (planet_data.selected_planet.name != "Sun") {
+    //     return;
+    // }
 
     planet_data.hovered_planet = get_hovered_planet();
     // console.log(hovered_planet)
@@ -108,11 +108,16 @@ function get_hovered_planet() {
 
 // Focuses camera on chosen planet
 function select_planet(name) {
+    if (name == planet_data.selected_planet.name)
+        return;
+
     let planets = planet_data.planets;
     planets.forEach(planet => {
         if (planet.name == name) {
             planet_data.selected_planet = planet
-            planet_data.DRAW_SCALE /= 1000
+            planet_data.DRAW_SCALE /= 500
+            planet_data.SPEED_SCALE /= 10
+            planet_data.UPDATE_ITERATIONS *= 10
             planet.radius = 5
             return
         }
@@ -121,7 +126,12 @@ function select_planet(name) {
 
 // Resets selected planet to the sun
 function deselect_planets() {
+    if (planet_data.selected_planet.name == "Sun")
+        return;
+
     planet_data.selected_planet.radius = 2
-    planet_data.selected_planet = planet_data.sun;
-    planet_data.DRAW_SCALE *= 100
+    planet_data.selected_planet = planet_data.selected_planet.parents[0];
+    planet_data.DRAW_SCALE *= 500
+    planet_data.SPEED_SCALE *= 10
+    planet_data.UPDATE_ITERATIONS /= 10
 }
