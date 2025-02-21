@@ -10,17 +10,20 @@ function center_screen() {
 function display_fps() {
     fill(255)
   
-    let details_padding = createVector(10, 20, 0)
-    let fps = 1000 / deltaTime;
+    let fps_offset = createVector(10, 20, 0)
+    let fps = round(1000 / deltaTime, 2);
+
+    let pos_x = fps_offset.x - SCREEN_WIDTH/2 + planet_data.selected_planet.position.x / planet_data.DRAW_SCALE;
+    let pos_y = fps_offset.y - SCREEN_HEIGHT/2 + planet_data.selected_planet.position.y / planet_data.DRAW_SCALE;
   
-    text("FPS: " + fps, planet_data.selected_planet.position.x / DRAW_SCALE - SCREEN_WIDTH / 2 + details_padding.x, planet_data.selected_planet.position.y / DRAW_SCALE - SCREEN_HEIGHT / 2 + details_padding.y)
+    text("FPS: " + fps, pos_x, pos_y)
 }
 
 function draw_background() {
     background(0)
     randomSeed(planet_data.STAR_SEED)
     for (let i = 0; i < planet_data.NUM_STARS; i++) {
-        let position = createVector(random(-2*SCREEN_WIDTH/3, 2*SCREEN_WIDTH/3), random(-SCREEN_HEIGHT/2, SCREEN_HEIGHT/2))
+        let position = createVector(random(-3*SCREEN_WIDTH/4, 3*SCREEN_WIDTH/4), random(-SCREEN_HEIGHT/2, SCREEN_HEIGHT/2))
         let centerX = (planet_data.selected_planet.position.x / planet_data.DRAW_SCALE)
         let centerY = (planet_data.selected_planet.position.y / planet_data.DRAW_SCALE)
         position.x += centerX - constrain(0.1 * centerX, -50, 50)
@@ -54,8 +57,8 @@ function display_planet_details(planet) {
     push()
     fill(255)
     let screen_pos = createVector(0,0,0)
-    screen_pos.x = planet.position.x / DRAW_SCALE
-    screen_pos.y = planet.position.y / DRAW_SCALE
+    screen_pos.x = planet.position.x / planet_data.DRAW_SCALE
+    screen_pos.y = planet.position.y / planet_data.DRAW_SCALE
     
     let text_offset = createVector(10, -5, 0)
 
@@ -89,9 +92,11 @@ function draw_hover_details() {
 function get_hovered_planet() {
     var hovered_planet = null
     let mouse_pos = createVector(mouseX - SCREEN_WIDTH / 2, mouseY - SCREEN_HEIGHT / 2, 0)
+    mouse_pos.x += planet_data.selected_planet.position.x / planet_data.DRAW_SCALE
+    mouse_pos.y += planet_data.selected_planet.position.y / planet_data.DRAW_SCALE
     
     planet_data.planets.forEach(planet => {
-        let planet_pos = createVector(planet.position.x / DRAW_SCALE, planet.position.y / DRAW_SCALE)
+        let planet_pos = createVector(planet.position.x / planet_data.DRAW_SCALE, planet.position.y / planet_data.DRAW_SCALE)
 
         if (mouse_pos.dist(planet_pos) < HOVER_CUTOFF_DISTANCE) {
             hovered_planet = planet
@@ -107,7 +112,7 @@ function select_planet(name) {
     planets.forEach(planet => {
         if (planet.name == name) {
             planet_data.selected_planet = planet
-            planet_data.DRAW_SCALE /= 100
+            planet_data.DRAW_SCALE /= 1000
             planet.radius = 5
             return
         }
