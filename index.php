@@ -10,6 +10,10 @@
 
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
+
+    <script src="utilities.js"></script>
+    <script src="planets.js"></script>
+    <script src="calculations.js"></script>
   </head>
 
   <body>
