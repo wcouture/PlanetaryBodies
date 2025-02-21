@@ -12,10 +12,15 @@ function init_sun() {
     planet_data.selected_planet = sun;
 }
 
+function init_stars() {
+    planet_data.STAR_SEED = random(0, 1000);
+    planet_data.NUM_STARS = random(200, 300)
+}
+
 function init_planets() {
     planet_data.DRAW_SCALE = 1100000000
     planet_data.SPEED_SCALE = 100
-    planet_data.UPDATE_ITERATIONS = 1
+    planet_data.UPDATE_ITERATIONS = 10
     planet_data.planets = []
 
     let mercury = {
@@ -118,6 +123,8 @@ function init_planets() {
     add_planet(saturn)
     add_planet(uranus)
     add_planet(neptune)
+
+    init_stars()
 }
 
 function add_planet(planet) {
@@ -126,7 +133,7 @@ function add_planet(planet) {
 
 function draw_body(body) {
     fill(body.color[0], body.color[1], body.color[2])
-    circle(body.position.x / DRAW_SCALE, body.position.y / DRAW_SCALE, body.radius * 2)
+    circle(body.position.x / planet_data.DRAW_SCALE, body.position.y / planet_data.DRAW_SCALE, body.radius * 2)
 }
 
 function draw_planets() {

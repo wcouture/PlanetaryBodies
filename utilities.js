@@ -1,7 +1,10 @@
 const HOVER_CUTOFF_DISTANCE = 20
+var STAR_DRAW_SCALE = 1
 
 function center_screen() {
-    translate(SCREEN_WIDTH / 2 - planet_data.selected_planet.position.x / DRAW_SCALE, SCREEN_HEIGHT / 2 - planet_data.selected_planet.position.y / DRAW_SCALE);
+    let centerX = (SCREEN_WIDTH / 2) - (planet_data.selected_planet.position.x / planet_data.DRAW_SCALE)
+    let centerY = (SCREEN_HEIGHT / 2) - (planet_data.selected_planet.position.y / planet_data.DRAW_SCALE)
+    translate(centerX, centerY);
 }
 
 function display_fps() {
@@ -15,6 +18,19 @@ function display_fps() {
 
 function draw_background() {
     background(0)
+    randomSeed(planet_data.STAR_SEED)
+    for (let i = 0; i < planet_data.NUM_STARS; i++) {
+        let position = createVector(random(-2*SCREEN_WIDTH/3, 2*SCREEN_WIDTH/3), random(-SCREEN_HEIGHT/2, SCREEN_HEIGHT/2))
+        let centerX = (planet_data.selected_planet.position.x / planet_data.DRAW_SCALE)
+        let centerY = (planet_data.selected_planet.position.y / planet_data.DRAW_SCALE)
+        position.x += centerX - constrain(0.1 * centerX, -50, 50)
+        position.y += centerY - constrain(0.1 * centerY, -50, 50)
+
+        push()
+        fill(255, 255, 255, 100)
+        circle(position.x, position.y, 2)
+        pop()
+    }
 }
 
 // Draws vector lines for velocity and acceleration
@@ -41,12 +57,10 @@ function display_planet_details(planet) {
     screen_pos.x = planet.position.x / DRAW_SCALE
     screen_pos.y = planet.position.y / DRAW_SCALE
     
-    let text_pos = createVector(-SCREEN_WIDTH/2, -SCREEN_HEIGHT/2)
-    text_pos.x += 30
-    text_pos.y += 50
+    let text_offset = createVector(10, -5, 0)
 
-    textSize(16)
-    text(planet.name, text_pos.x, text_pos.y)
+    textSize(12)
+    text(planet.name, screen_pos.x + text_offset.x, screen_pos.y + text_offset.y)
 
     noFill()
     strokeWeight(1)
@@ -90,9 +104,11 @@ function get_hovered_planet() {
 // Focuses camera on chosen planet
 function select_planet(name) {
     let planets = planet_data.planets;
-    planets.forEach(element => {
-        if (element.name == name) {
-            planet_data.selected_planet = element
+    planets.forEach(planet => {
+        if (planet.name == name) {
+            planet_data.selected_planet = planet
+            planet_data.DRAW_SCALE /= 100
+            planet.radius = 5
             return
         }
     });
@@ -100,5 +116,7 @@ function select_planet(name) {
 
 // Resets selected planet to the sun
 function deselect_planets() {
-    planet_data.selected_planet = sun;
+    planet_data.selected_planet.radius = 2
+    planet_data.selected_planet = planet_data.sun;
+    planet_data.DRAW_SCALE *= 100
 }
