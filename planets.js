@@ -23,7 +23,7 @@ function init_stars() {
 // Initializes scalar variables used in drawing and updating planets
 function init_scalars() {
     planet_data.DRAW_SCALE = 1100000000
-    planet_data.SPEED_SCALE = 1000
+    planet_data.SPEED_SCALE = 100
     planet_data.UPDATE_ITERATIONS = 10
 }
 
@@ -46,6 +46,7 @@ function init_planets() {
         parents: [planet_data.sun],
         children: []
     }
+    add_planet(mercury)
     let venus = {
         name: "Venus",
         position: createVector(0, 108200000000 / UNIVERSE_SCALE, 0),
@@ -60,6 +61,7 @@ function init_planets() {
         parents: [planet_data.sun],
         children: []
     }
+    add_planet(venus)
 
     let earth = {
         name: "Earth",
@@ -75,6 +77,7 @@ function init_planets() {
         parents: [planet_data.sun],
         children: []
     }
+    add_planet(earth)
     let moon = {
         name: "Moon",
         position: createVector(0, (149000000000 + 384400000) / UNIVERSE_SCALE, 0),
@@ -89,6 +92,7 @@ function init_planets() {
         parents: [earth, planet_data.sun],
         children: []
     }
+    add_planet(moon)
     earth.children.push(moon)
 
 
@@ -107,9 +111,10 @@ function init_planets() {
         parents: [planet_data.sun],
         children: []
     }
+    add_planet(mars)
     let phobos = {
         name: "Phobos",
-        position: createVector(0, (225000000000 + 9376000) / UNIVERSE_SCALE, 0),
+        position: createVector(0, (225000000000 + 9400000) / UNIVERSE_SCALE, 0),
         velocity: createVector( (24080 + 2138) / (UNIVERSE_SCALE / 3), 0, 0),
         accel: createVector(0,0,0),
         mass: 10600000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
@@ -121,7 +126,24 @@ function init_planets() {
         parents: [mars, planet_data.sun],
         children: []
     }
+    add_planet(phobos)
     mars.children.push(phobos)
+    let deimos = {
+        name: "Deimos",
+        position: createVector(0, (225000000000 + 23463000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (24080 + 13514) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 1500000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 5,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [100, 100, 100],
+        parents: [mars, planet_data.sun],
+        children: []
+    }
+    add_planet(deimos)
+    mars.children.push(deimos)
 
 
 
@@ -139,6 +161,72 @@ function init_planets() {
         parents: [planet_data.sun],
         children: []
     }
+    add_planet(jupiter)
+    let ganymede = {
+        name: "Ganymede",
+        position: createVector(0, (775000000000 + 1070400000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (13060 + 10880) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 148190000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 5,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [242, 189, 148],
+        parents: [jupiter, planet_data.sun],
+        children: []
+    }
+    add_planet(ganymede)
+    jupiter.children.push(ganymede)
+    let callisto = {
+        name: "Callisto",
+        position: createVector(0, (775000000000 + 1882700000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (13060 + 8204) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 107593800000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 5,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [242, 189, 148],
+        parents: [jupiter, planet_data.sun],
+        children: []
+    }
+    add_planet(callisto)
+    jupiter.children.push(callisto)
+    let io = {
+        name: "Io",
+        position: createVector(0, (775000000000 + 421700000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (13060 + 17334) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 89319380000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 5,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [242, 189, 148],
+        parents: [jupiter, planet_data.sun],
+        children: []
+    }
+    add_planet(io)
+    jupiter.children.push(io)
+    let europa = {
+        name: "Europa",
+        position: createVector(0, (775000000000 + 670900000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (13060 + 13743) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 47998400000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 5,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [242, 189, 148],
+        parents: [jupiter, planet_data.sun],
+        children: []
+    }
+    add_planet(europa)
+    jupiter.children.push(europa)
+
     let saturn = {
         name: "Saturn",
         position: createVector(0, 1420000000000 / UNIVERSE_SCALE, 0),
@@ -153,6 +241,7 @@ function init_planets() {
         parents: [planet_data.sun],
         children: []
     }
+    add_planet(saturn)
     let uranus = {
         name: "Uranus",
         position: createVector(0, 2882000000000 / UNIVERSE_SCALE, 0),
@@ -167,6 +256,7 @@ function init_planets() {
         parents: [planet_data.sun],
         children: []
     }
+    add_planet(uranus)
     let neptune = {
         name: "Neptune",
         position: createVector(0, 4510000000000 / UNIVERSE_SCALE, 0),
@@ -181,16 +271,6 @@ function init_planets() {
         parents: [planet_data.sun],
         children: []
     }
-      
-    add_planet(moon)
-    add_planet(phobos)
-    add_planet(mercury)
-    add_planet(venus)
-    add_planet(earth)
-    add_planet(mars)
-    add_planet(jupiter)
-    add_planet(saturn)
-    add_planet(uranus)
     add_planet(neptune)
 
     planet_data.sun.children.push(mercury)
@@ -219,9 +299,18 @@ function draw_body(body) {
 
 function draw_planets() {
     strokeWeight(0)
-    let planets = planet_data.planets;
-    for (let i = 0; i < planets.length; i++) {
-        draw_body(planets[i]);
-    }
-    draw_body(planet_data.sun)
+    draw_planet(planet_data.sun)
+    // let planets = planet_data.selected_planet.children;
+    // for (let i = 0; i < planets.length; i++) {
+    //     draw_body(planets[i]);
+    // }
+    // draw_body(planet_data.selected_planet)
+}
+
+function draw_planet(planet) {
+    let children = planet.children
+    children.forEach(child => {
+        draw_planet(child)
+    });
+    draw_body(planet)
 }

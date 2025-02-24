@@ -45,4 +45,6 @@ function draw() {
   draw_planets();
   draw_hover_details();
   draw_focus_details();
+
+  display_fps();
 }
