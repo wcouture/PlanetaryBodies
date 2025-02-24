@@ -23,7 +23,7 @@ function init_stars() {
 // Initializes scalar variables used in drawing and updating planets
 function init_scalars() {
     planet_data.DRAW_SCALE = 1100000000
-    planet_data.SPEED_SCALE = 100
+    planet_data.SPEED_SCALE = 1000
     planet_data.UPDATE_ITERATIONS = 10
 }
 
@@ -114,7 +114,7 @@ function init_planets() {
     add_planet(mars)
     let phobos = {
         name: "Phobos",
-        position: createVector(0, (225000000000 + 9400000) / UNIVERSE_SCALE, 0),
+        position: createVector(0, (225000000000 + 9367000) / UNIVERSE_SCALE, 0),
         velocity: createVector( (24080 + 2138) / (UNIVERSE_SCALE / 3), 0, 0),
         accel: createVector(0,0,0),
         mass: 10600000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
@@ -131,7 +131,7 @@ function init_planets() {
     let deimos = {
         name: "Deimos",
         position: createVector(0, (225000000000 + 23463000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (24080 + 13514) / (UNIVERSE_SCALE / 3), 0, 0),
+        velocity: createVector( (24080 + 1351) / (UNIVERSE_SCALE / 3), 0, 0),
         accel: createVector(0,0,0),
         mass: 1500000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
@@ -172,7 +172,7 @@ function init_planets() {
         zoomed_radius: 5,
         child_radius: 2,
         focus_scale: 1000,
-        color: [242, 189, 148],
+        color: [191, 182, 157],
         parents: [jupiter, planet_data.sun],
         children: []
     }
@@ -188,7 +188,7 @@ function init_planets() {
         zoomed_radius: 5,
         child_radius: 2,
         focus_scale: 1000,
-        color: [242, 189, 148],
+        color: [142, 146, 158],
         parents: [jupiter, planet_data.sun],
         children: []
     }
@@ -204,7 +204,7 @@ function init_planets() {
         zoomed_radius: 5,
         child_radius: 2,
         focus_scale: 1000,
-        color: [242, 189, 148],
+        color: [252, 238, 179],
         parents: [jupiter, planet_data.sun],
         children: []
     }
@@ -220,7 +220,7 @@ function init_planets() {
         zoomed_radius: 5,
         child_radius: 2,
         focus_scale: 1000,
-        color: [242, 189, 148],
+        color: [219, 247, 255],
         parents: [jupiter, planet_data.sun],
         children: []
     }
