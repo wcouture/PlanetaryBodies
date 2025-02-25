@@ -290,7 +290,6 @@ function init_planets() {
     }
     add_planet(enceladus)
     saturn.children.push(enceladus)
-    
 
     let uranus = {
         name: "Uranus",
@@ -342,9 +341,31 @@ function add_planet(planet) {
 function draw_body(body) {
     let screen_x = (body.position.x - planet_data.selected_planet.position.x) / planet_data.DRAW_SCALE 
     let screen_y = (body.position.y - planet_data.selected_planet.position.y) / planet_data.DRAW_SCALE
+    
 
     fill(body.color[0], body.color[1], body.color[2])
     circle(screen_x, screen_y, body.draw_radius * 2)
+
+    if (body.name == "Saturn" && planet_data.selected_planet.name == "Saturn") {
+        draw_rings(body)
+    }
+}
+
+function draw_rings(body) {
+    push()
+    noFill()
+    
+    strokeWeight(body.draw_radius - 1)
+    stroke(120, 120, 152)
+    circle(0,0, body.draw_radius * 3.5)
+
+    strokeWeight(body.draw_radius - 2)
+    stroke(40, 70, 65)
+    circle(0,0, body.draw_radius * 3.5)
+
+
+    pop()
+
 }
 
 function draw_planets() {
