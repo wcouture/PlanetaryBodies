@@ -3,31 +3,36 @@ const G = 0.000000000066743;
 
 // Calculates accelerations, applies acceleration to velocity, applies velocity to position
 function update_positions() {
-    let planets = planet_data.planets;
-  
-    for (let i = 0; i < planets.length; i++) {
-      let planet = planets[i]
-      planet.accel.x = 0
-      planet.accel.y = 0
+  let planets = planet_data.planets;
 
-      let dT = deltaTime / planet_data.UPDATE_ITERATIONS; // Calculates fractional time for subdivided updates
-      for (let u = 0; u < planet_data.UPDATE_ITERATIONS; u++) {
+  for (let i = 0; i < planets.length; i++) {
+    let planet = planets[i]
+    planet.accel.x = 0
+    planet.accel.y = 0
 
-        // Accumulates accelerations onto velocity for all parent bodies
-        for (let j = 0; j < planet.parents.length; j++) {
-          let g_accel_vec = calculate_acceleration(planet,  planet.parents[j]);
-          planet.velocity.x += g_accel_vec.x * dT;
-          planet.velocity.y += g_accel_vec.y * dT;
+    let total_deltaX = 0
+    let total_deltaY = 0
+
+    let dT = deltaTime / planet_data.UPDATE_ITERATIONS; // Calculates fractional time for subdivided updates
+    for (let u = 0; u < planet_data.UPDATE_ITERATIONS; u++) {
+
+      // Accumulates accelerations onto velocity for all parent bodies
+      for (let j = 0; j < planet.parents.length; j++) {
+        let g_accel_vec = calculate_acceleration(planet,  planet.parents[j]);
+        planet.velocity.x += g_accel_vec.x * dT;
+        planet.velocity.y += g_accel_vec.y * dT;
         
-          planet.accel.x += g_accel_vec.x;
-          planet.accel.y += g_accel_vec.y;
-        }
-    
-        // Applies accumulated new velocity to position for calculated time interval
-        planet.position.x += planet.velocity.x * dT;
-        planet.position.y += planet.velocity.y * dT;
+        planet.accel.x += g_accel_vec.x;
+        planet.accel.y += g_accel_vec.y;
       }
+    
+      // Applies accumulated new velocity to position for calculated time interval
+      total_deltaX += planet.velocity.x * dT;
+      total_deltaY += planet.velocity.y * dT;
     }
+    planet.position.x += total_deltaX
+    planet.position.y += total_deltaY
+  }
 }
 
 // Calculates gravitational acceleration vector from planet to parent_body

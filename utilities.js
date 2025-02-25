@@ -212,7 +212,7 @@ function select_planet(name) {
             UTIL.transition_time = 0
 
             planet_data.SPEED_SCALE /= 100
-            planet_data.UPDATE_ITERATIONS *= 10
+            planet_data.UPDATE_ITERATIONS *= 50
             
             return
         }
@@ -256,7 +256,7 @@ function deselect_planets() {
     UTIL.prev_planet = planet_data.selected_planet
     
     planet_data.SPEED_SCALE *= 100
-    planet_data.UPDATE_ITERATIONS /= 10
+    planet_data.UPDATE_ITERATIONS /= 50
 
     planet_data.selected_planet = planet_data.selected_planet.parents[0]
 }

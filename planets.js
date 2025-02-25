@@ -24,7 +24,7 @@ function init_stars() {
 function init_scalars() {
     planet_data.DRAW_SCALE = 1100000000
     planet_data.SPEED_SCALE = 1000
-    planet_data.UPDATE_ITERATIONS = 10
+    planet_data.UPDATE_ITERATIONS = 1
 }
 
 function init_planets() {
@@ -242,6 +242,56 @@ function init_planets() {
         children: []
     }
     add_planet(saturn)
+    let titan = {
+        name: "Titan",
+        position: createVector(0, (1420000000000 + 1221870000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (9670 + 5570) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 134518000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 5,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [255, 228, 207],
+        parents: [saturn, planet_data.sun],
+        children: []
+    }
+    add_planet(titan)
+    saturn.children.push(titan)
+    let rhea = {
+        name: "Rhea",
+        position: createVector(0, (1420000000000 + 527040000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (9670 + 8480) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 2306485400000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 5,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [255, 228, 207],
+        parents: [saturn, planet_data.sun],
+        children: []
+    }
+    add_planet(rhea)
+    saturn.children.push(rhea)
+    let enceladus = {
+        name: "Enceladus",
+        position: createVector(0, (1420000000000 + 237948000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (9670 + 12640) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 108031800000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 5,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [255, 228, 207],
+        parents: [saturn, planet_data.sun],
+        children: []
+    }
+    add_planet(enceladus)
+    saturn.children.push(enceladus)
+    
+
     let uranus = {
         name: "Uranus",
         position: createVector(0, 2882000000000 / UNIVERSE_SCALE, 0),
