@@ -9,6 +9,8 @@ const UTIL = {
     next_radius: 2,
 }
 
+const body_facts = {}
+
 var STAR_DRAW_SCALE = 1
 
 function init_draw_scales() {
@@ -16,6 +18,120 @@ function init_draw_scales() {
     UTIL.next_draw_scale = 1100000000;
     UTIL.transition_time = ZOOM_TIME;
     prev_planet = planet_data.selected_planet;
+}
+
+function init_body_facts() {
+    body_facts["Sun"] = {}
+    body_facts["Sun"]["Names:"] = "Sun, Sol, Helios"
+    body_facts["Sun"]["Mass:"] = "1.9891 * 10^30 kg"
+    body_facts["Sun"]["Equitorial Radius:"] = '6.957 * 10^8 m'
+    body_facts["Sun"]["Mean Distance From Earth:"] = '148,600,000 km'
+    body_facts["Sun"]["Mean Distance From Milky Way Core:"] = '24,000 - 28,000 light years'
+
+    body_facts["Mercury"] = {}
+    body_facts["Mercury"]["Names:"] = "Mercury"
+    body_facts["Mercury"]["Classification:"] = "Terrestrial"
+    body_facts["Mercury"]["Mass:"] = "3.3011 * 10^23 kg"
+    body_facts["Mercury"]["Equitorial Radius:"] = '2,438.7 km'
+    body_facts["Mercury"]["Aphelion:"] = '69,820,000 km'
+    body_facts["Mercury"]["Perihelion:"] = '46,000,000 km'
+    body_facts["Mercury"]["Semi-major Axis:"] = '57,910,000 km'
+    body_facts["Mercury"]["Orbital Period:"] = '87.9691 d (sidereal) or 115.88 d (synodic)'
+    body_facts["Mercury"]["Mean Orbital Velocity:"] = '47.36 km/s'
+    body_facts["Mercury"]["Synodic Rotation:"] = '176 d'
+    body_facts["Mercury"]["Sidereal Rotation:"] = '58.646 d'
+
+    body_facts["Venus"] = {}
+    body_facts["Venus"]["Names:"] = "Venus"
+    body_facts["Venus"]["Classification:"] = "Terrestrial"
+    body_facts["Venus"]["Mass:"] = "4.8675 * 10^24 kg"
+    body_facts["Venus"]["Equitorial Radius:"] = '6,051.8 km'
+    body_facts["Venus"]["Aphelion:"] = '108,940,000 km'
+    body_facts["Venus"]["Perihelion:"] = '107,480,000 km'
+    body_facts["Venus"]["Semi-major Axis:"] = '108,210,000 km'
+    body_facts["Venus"]["Orbital Period:"] = '224.701 d (sidereal) or 583.92 d (synodic)'
+    body_facts["Venus"]["Mean Orbital Velocity:"] = '35.02 km/s'
+    body_facts["Venus"]["Synodic Rotation:"] = '-116.75 d (retrograde)'
+    body_facts["Venus"]["Sidereal Rotation:"] = '-243.0226 d (retrograde)'
+    
+    body_facts["Earth"] = {}
+    body_facts["Earth"]["Names:"] = "Earth, Terra, Tellus, Gaia"
+    body_facts["Earth"]["Classification:"] = "Terrestrial"
+    body_facts["Earth"]["Mass:"] = "5.972168 * 10^24 kg"
+    body_facts["Earth"]["Equitorial Radius:"] = '6,378.137 km'
+    body_facts["Earth"]["Aphelion:"] = '152,097,597 km'
+    body_facts["Earth"]["Perihelion:"] = '147,098,450 km'
+    body_facts["Earth"]["Semi-major Axis:"] = '149,598,023 km'
+    body_facts["Earth"]["Orbital Period:"] = '365.256363004 d (sidereal)'
+    body_facts["Earth"]["Mean Orbital Velocity:"] = '29.7827 km/s'
+    body_facts["Earth"]["Synodic Rotation:"] = '1 d (24 h)'
+    body_facts["Earth"]["Sidereal Rotation:"] = '0.99726968 d (23h 56m 4.1s)'
+
+    body_facts["Mars"] = {}
+    body_facts["Mars"]["Names:"] = "Mars, 'The Red Planet'"
+    body_facts["Mars"]["Classification:"] = "Terrestrial"
+    body_facts["Mars"]["Mass:"] = "6.4171 * 10^23 kg"
+    body_facts["Mars"]["Equitorial Radius:"] = '3,396.2 km'
+    body_facts["Mars"]["Aphelion:"] = '249,261,000 km'
+    body_facts["Mars"]["Perihelion:"] = '206,650,000 km'
+    body_facts["Mars"]["Semi-major Axis:"] = '227,939,366 km'
+    body_facts["Mars"]["Orbital Period:"] = '686.98 d (sidereal) or 779.94 d (synodic)'
+    body_facts["Mars"]["Mean Orbital Velocity:"] = '24.07 km/s'
+    body_facts["Mars"]["Synodic Rotation:"] = '1.02749125 d (24h 39m 36s)'
+    body_facts["Mars"]["Sidereal Rotation:"] = '1.025957 d (24h 37m 22.7s)'
+
+    body_facts["Jupiter"] = {}
+    body_facts["Jupiter"]["Names:"] = "Jupiter"
+    body_facts["Jupiter"]["Classification:"] = "Gas Giant"
+    body_facts["Jupiter"]["Mass:"] = "1.8982 * 10^27 kg"
+    body_facts["Jupiter"]["Equitorial Radius:"] = '71,492 km'
+    body_facts["Jupiter"]["Aphelion:"] = '816,363,000 km'
+    body_facts["Jupiter"]["Perihelion:"] = '740,595,000 km'
+    body_facts["Jupiter"]["Semi-major Axis:"] = '778,479,000 km'
+    body_facts["Jupiter"]["Orbital Period:"] = '4,332.59 d (sidereal) or 398.88 d (synodic)'
+    body_facts["Jupiter"]["Mean Orbital Velocity:"] = '13.06 km/s'
+    body_facts["Jupiter"]["Synodic Rotation:"] = '9h 55m 33s'
+    body_facts["Jupiter"]["Sidereal Rotation:"] = '9h 55m 30s'
+
+    body_facts["Saturn"] = {}
+    body_facts["Saturn"]["Names:"] = "Saturn"
+    body_facts["Saturn"]["Classification:"] = "Gas Giant"
+    body_facts["Saturn"]["Mass:"] = "5.6834 * 10^26 kg"
+    body_facts["Saturn"]["Equitorial Radius:"] = '60,268 km'
+    body_facts["Saturn"]["Aphelion:"] = '1,514,500,000 km'
+    body_facts["Saturn"]["Perihelion:"] = '1,353,550,000 km'
+    body_facts["Saturn"]["Semi-major Axis:"] = '1,433,530,000 km'
+    body_facts["Saturn"]["Orbital Period:"] = '10,755.7 d (sidereal) or 378.09 d (synodic)'
+    body_facts["Saturn"]["Mean Orbital Velocity:"] = '9.68 km/s'
+    body_facts["Saturn"]["Synodic Rotation:"] = '10h 32m 36s'
+    body_facts["Saturn"]["Sidereal Rotation:"] = '10h 33m 38s'
+
+    body_facts["Uranus"] = {}
+    body_facts["Uranus"]["Names:"] = "Uranus"
+    body_facts["Uranus"]["Classification:"] = "Ice Giant"
+    body_facts["Uranus"]["Mass:"] = "8.681 * 10^25 kg"
+    body_facts["Uranus"]["Equitorial Radius:"] = '25,559 km'
+    body_facts["Uranus"]["Aphelion:"] = '3,006,390,000 km'
+    body_facts["Uranus"]["Perihelion:"] = '2,735,560,000 km'
+    body_facts["Uranus"]["Semi-major Axis:"] = '2,870,972,000 km'
+    body_facts["Uranus"]["Orbital Period:"] = '30,688.5 d (sidereal) or 369.66 d (synodic)'
+    body_facts["Uranus"]["Mean Orbital Velocity:"] = '6.80 km/s'
+    body_facts["Uranus"]["Synodic Rotation:"] = '-17h 14m 23s (retrograde)'
+    body_facts["Uranus"]["Sidereal Rotation:"] = '-17h 14m 24s (retrograde)'
+
+    body_facts["Neptune"] = {}
+    body_facts["Neptune"]["Names:"] = "Neptune"
+    body_facts["Neptune"]["Classification:"] = "Ice Giant"
+    body_facts["Neptune"]["Mass:"] = "1.02409 * 10^26 kg"
+    body_facts["Neptune"]["Equitorial Radius:"] = '24,764 km'
+    body_facts["Neptune"]["Aphelion:"] = '4,540,000,000 km'
+    body_facts["Neptune"]["Perihelion:"] = '4,460,000,000 km'
+    body_facts["Neptune"]["Semi-major Axis:"] = '4,500,000,000 km'
+    body_facts["Neptune"]["Orbital Period:"] = '60,195 d (sidereal) or 367.49 d (synodic)'
+    body_facts["Neptune"]["Mean Orbital Velocity:"] = '5.43 km/s'
+    body_facts["Neptune"]["Synodic Rotation:"] = '16h 6m 36s'
+    body_facts["Neptune"]["Sidereal Rotation:"] = '16h 6m 36s'
+
 }
 
 function center_screen() {
@@ -87,26 +203,9 @@ function draw_vectors(planet) {
     pop();
 }
 
-function get_selection_hovered() {
-
-}
-
-
-// Draws planet details when focusing on it
-function draw_focus_details() {
-    let planet = planet_data.selected_planet;
-
-    let base_x = 0
+function draw_satellite_list() {
+    let base_x = 0;
     let base_y = - SCREEN_HEIGHT / 2
-
-    push()
-    fill(255)
-    textSize(18)
-
-    push()
-    textAlign(CENTER)
-    text(planet.name, base_x, base_y + 40)
-    pop()
 
     text("Satellites:", base_x - SCREEN_WIDTH / 2 + 30, base_y + 50)
     textSize(14)
@@ -138,7 +237,55 @@ function draw_focus_details() {
         padding += 15
     })
     pop()
-    return hovered_body
+}
+
+function draw_body_facts() {
+    push()
+    textAlign(RIGHT)
+
+    let text_pos = createVector(SCREEN_WIDTH / 2 - 50, -SCREEN_HEIGHT / 2 + 50, 0)
+    textSize(18)
+    fill(255)
+    text("Body Facts:", text_pos.x, text_pos.y)
+    let line_padding = 25
+    var line_num = 1
+
+    textSize(12)
+    let fact_keys = Object.keys(body_facts[planet_data.selected_planet.name])
+    fact_keys.forEach((key, index) => {
+        fill(200)
+        textSize(12)
+        text(body_facts[planet_data.selected_planet.name][key], text_pos.x, text_pos.y + line_padding * (line_num + 1))
+
+        fill(255)
+        textSize(14)
+        text(key, text_pos.x, text_pos.y + line_padding * (line_num))
+
+        line_num += 2
+    })
+
+    pop()
+}
+
+// Draws planet details when focusing on it
+function draw_focus_details() {
+    let planet = planet_data.selected_planet;
+
+    let base_x = 0
+    let base_y = - SCREEN_HEIGHT / 2
+
+    push()
+    fill(255)
+    textSize(18)
+
+    push()
+    textAlign(CENTER)
+    text(planet.name, base_x, base_y + 40)
+    pop()
+
+    draw_satellite_list()
+    draw_body_facts()
+
 }
 
 // Draws selection circle around planet and displays name

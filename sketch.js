@@ -15,6 +15,7 @@ function setup() {
 
   init_sun()
   init_planets();
+  init_body_facts()
 
   createCanvas(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
