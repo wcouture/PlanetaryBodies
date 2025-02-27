@@ -132,6 +132,22 @@ function init_body_facts() {
     body_facts["Neptune"]["Synodic Rotation:"] = '16h 6m 36s'
     body_facts["Neptune"]["Sidereal Rotation:"] = '16h 6m 36s'
 
+    body_facts["Moon"] = {}
+
+    body_facts["Deimos"] = {}
+    body_facts["Phobos"] = {}
+
+    body_facts["Io"] = {}
+    body_facts["Europa"] = {}
+    body_facts["Ganymede"] = {}
+    body_facts["Callisto"] = {}
+
+    body_facts["Titan"] = {}
+    body_facts["Rhea"] = {}
+    body_facts["Enceladus"] = {}
+
+
+
 }
 
 function center_screen() {
