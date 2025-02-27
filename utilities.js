@@ -237,6 +237,7 @@ function draw_satellite_list() {
         padding += 15
     })
     pop()
+    return hovered_body
 }
 
 function draw_body_facts() {
@@ -283,9 +284,9 @@ function draw_focus_details() {
     text(planet.name, base_x, base_y + 40)
     pop()
 
-    draw_satellite_list()
+    
     draw_body_facts()
-
+    return draw_satellite_list()
 }
 
 // Draws selection circle around planet and displays name
