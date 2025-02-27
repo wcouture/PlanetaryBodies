@@ -248,7 +248,7 @@ function draw_body_facts() {
     textSize(18)
     fill(255)
     text("Body Facts:", text_pos.x, text_pos.y)
-    let line_padding = 25
+    let line_padding = 15
     var line_num = 1
 
     textSize(12)
@@ -256,7 +256,7 @@ function draw_body_facts() {
     fact_keys.forEach((key, index) => {
         fill(200)
         textSize(12)
-        text(body_facts[planet_data.selected_planet.name][key], text_pos.x, text_pos.y + line_padding * (line_num + 1))
+        text(body_facts[planet_data.selected_planet.name][key], text_pos.x, text_pos.y + line_padding * line_num + 12)
 
         fill(255)
         textSize(14)
