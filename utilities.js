@@ -136,7 +136,7 @@ function init_body_facts() {
     body_facts["Moon"] = {}
     body_facts["Moon"]["Names:"] = "Moon, Luna, Selene, Cynthia"
     body_facts["Moon"]["Mass:"] = "7.346 * 10^22 kg"
-    body_facts["Moon"]["Equitorial Radius:"] = '1,738.1 km'
+    body_facts["Moon"]["Mean Radius:"] = '1,738.1 km'
     body_facts["Moon"]["Apogee:"] = '405,400 km'
     body_facts["Moon"]["Perigee:"] = '362,600 km'
     body_facts["Moon"]["Semi-major Axis:"] = '384,399 km'
@@ -149,7 +149,7 @@ function init_body_facts() {
     body_facts["Deimos"] = {}
     body_facts["Deimos"]["Names:"] = "Deimos"
     body_facts["Deimos"]["Mass:"] = "1.51 * 10^15 kg"
-    body_facts["Deimos"]["Equitorial Radius:"] = '6.27 km'
+    body_facts["Deimos"]["Mean Radius:"] = '6.27 km'
     body_facts["Deimos"]["Apoapsis:"] = '23,455.5 km'
     body_facts["Deimos"]["Periapsis:"] = '23,470.9 km'
     body_facts["Deimos"]["Semi-major Axis:"] = '23,463.2 km'
@@ -160,7 +160,7 @@ function init_body_facts() {
     body_facts["Phobos"] = {}
     body_facts["Phobos"]["Names:"] = "Phobos"
     body_facts["Phobos"]["Mass:"] = "1.060 * 10^16 kg"
-    body_facts["Phobos"]["Equitorial Radius:"] = '11.08 km'
+    body_facts["Phobos"]["Mean Radius:"] = '11.08 km'
     body_facts["Phobos"]["Apoapsis:"] = '9,517.58 km'
     body_facts["Phobos"]["Periapsis:"] = '9,234.42 km'
     body_facts["Phobos"]["Semi-major Axis:"] = '9,376 km'
@@ -172,7 +172,7 @@ function init_body_facts() {
     body_facts["Io"] = {}
     body_facts["Io"]["Names:"] = "Io, Jupiter I"
     body_facts["Io"]["Mass:"] = "8.931938 * 10^22 kg"
-    body_facts["Io"]["Equitorial Radius:"] = '1,821.6 km'
+    body_facts["Io"]["Mean Radius:"] = '1,821.6 km'
     body_facts["Io"]["Apoapsis:"] = '423,400 km'
     body_facts["Io"]["Periapsis:"] = '420,000 km'
     body_facts["Io"]["Semi-major Axis:"] = '421,700 km'
@@ -183,7 +183,7 @@ function init_body_facts() {
     body_facts["Europa"] = {}
     body_facts["Europa"]["Names:"] = "Europa, Jupiter II"
     body_facts["Europa"]["Mass:"] = "4.79984 * 10^22 kg"
-    body_facts["Europa"]["Equitorial Radius:"] = '1,560.8 km'
+    body_facts["Europa"]["Mean Radius:"] = '1,560.8 km'
     body_facts["Europa"]["Apoapsis:"] = '679,938 km'
     body_facts["Europa"]["Periapsis:"] = '664,862 km'
     body_facts["Europa"]["Semi-major Axis:"] = '670,900 km'
@@ -194,7 +194,7 @@ function init_body_facts() {
     body_facts["Ganymede"] = {}
     body_facts["Ganymede"]["Names:"] = "Ganymede, Jupiter III"
     body_facts["Ganymede"]["Mass:"] = "1.4819 * 10^23 kg"
-    body_facts["Ganymede"]["Equitorial Radius:"] = '2,643.1 km'
+    body_facts["Ganymede"]["Mean Radius:"] = '2,643.1 km'
     body_facts["Ganymede"]["Apoapsis:"] = '1,071,600 km'
     body_facts["Ganymede"]["Periapsis:"] = '1,069,200 km'
     body_facts["Ganymede"]["Semi-major Axis:"] = '1,070,400 km'
@@ -205,7 +205,7 @@ function init_body_facts() {
     body_facts["Callisto"] = {}
     body_facts["Callisto"]["Names:"] = "Callisto, Jupiter IV"
     body_facts["Callisto"]["Mass:"] = "1.075938 * 10^23 kg"
-    body_facts["Callisto"]["Equitorial Radius:"] = '2,410.3 km'
+    body_facts["Callisto"]["Mean Radius:"] = '2,410.3 km'
     body_facts["Callisto"]["Apoapsis:"] = '1,897,000 km'
     body_facts["Callisto"]["Periapsis:"] = '1,869,000 km'
     body_facts["Callisto"]["Semi-major Axis:"] = '1,882,700 km'
@@ -217,7 +217,7 @@ function init_body_facts() {
     body_facts["Titan"] = {}
     body_facts["Titan"]["Names:"] = "Titan"
     body_facts["Titan"]["Mass:"] = "1.34518 * 10^23 kg"
-    body_facts["Titan"]["Equitorial Radius:"] = '2,574.73 km'
+    body_facts["Titan"]["Mean Radius:"] = '2,574.73 km'
     body_facts["Titan"]["Apoapsis:"] = '1,257,060 km'
     body_facts["Titan"]["Periapsis:"] = '1,186,680 km'
     body_facts["Titan"]["Semi-major Axis:"] = '1,221,870 km'
@@ -228,7 +228,7 @@ function init_body_facts() {
     body_facts["Rhea"] = {}
     body_facts["Rhea"]["Names:"] = "Rhea"
     body_facts["Rhea"]["Mass:"] = "7.346 * 10^22 kg"
-    body_facts["Rhea"]["Equitorial Radius:"] = '1,738.1 km'
+    body_facts["Rhea"]["Mean Radius:"] = '1,738.1 km'
     body_facts["Rhea"]["Apoapsis:"] = '527,567.57 km'
     body_facts["Rhea"]["Periapsis:"] = '526,513.49 km'
     body_facts["Rhea"]["Semi-major Axis:"] = '527,040 km'
@@ -239,7 +239,7 @@ function init_body_facts() {
     body_facts["Enceladus"] = {}
     body_facts["Enceladus"]["Names:"] = "Enceladus"
     body_facts["Enceladus"]["Mass:"] = "1.080318 * 10^20 kg"
-    body_facts["Enceladus"]["Equitorial Radius:"] = '252.1 km'
+    body_facts["Enceladus"]["Mean Radius:"] = '252.1 km'
     body_facts["Enceladus"]["Apoapsis:"] = '239,071.637 km'
     body_facts["Enceladus"]["Periapsis:"] = '236,834.876 km'
     body_facts["Enceladus"]["Semi-major Axis:"] = '237,948 km'
@@ -250,7 +250,7 @@ function init_body_facts() {
     body_facts["Mimas"] = {}
     body_facts["Mimas"]["Names:"] = "Mimas"
     body_facts["Mimas"]["Mass:"] = "3.75094 * 10^19 kg"
-    body_facts["Mimas"]["Equitorial Radius:"] = '198.2 km'
+    body_facts["Mimas"]["Mean Radius:"] = '198.2 km'
     body_facts["Mimas"]["Apoapsis:"] = '189,179 km'
     body_facts["Mimas"]["Periapsis:"] = '181,902 km'
     body_facts["Mimas"]["Semi-major Axis:"] = '185,539 km'
@@ -261,7 +261,7 @@ function init_body_facts() {
     body_facts["Tethys"] = {}
     body_facts["Tethys"]["Names:"] = "Tethys"
     body_facts["Tethys"]["Mass:"] = "6.1749 * 10^20 kg"
-    body_facts["Tethys"]["Equitorial Radius:"] = '531.1 km'
+    body_facts["Tethys"]["Mean Radius:"] = '531.1 km'
     body_facts["Tethys"]["Apoapsis:"] = '294,648.5 km'
     body_facts["Tethys"]["Periapsis:"] = '294,589.5 km'
     body_facts["Tethys"]["Semi-major Axis:"] = '294,619 km'
@@ -272,7 +272,7 @@ function init_body_facts() {
     body_facts["Dione"] = {}
     body_facts["Dione"]["Names:"] = "Dione"
     body_facts["Dione"]["Mass:"] = "1.0954868 * 10^21 kg"
-    body_facts["Dione"]["Equitorial Radius:"] = '561.4 km'
+    body_facts["Dione"]["Mean Radius:"] = '561.4 km'
     body_facts["Dione"]["Apoapsis:"] = '378,228.102 km'
     body_facts["Dione"]["Periapsis:"] = '376,567.551 km'
     body_facts["Dione"]["Semi-major Axis:"] = '377,396 km'
@@ -283,15 +283,83 @@ function init_body_facts() {
     body_facts["Lapetus"] = {}
     body_facts["Lapetus"]["Names:"] = "Lapetus"
     body_facts["Lapetus"]["Mass:"] = "1.80565 * 10^21 kg"
-    body_facts["Lapetus"]["Equitorial Radius:"] = '734.4 km'
+    body_facts["Lapetus"]["Mean Radius:"] = '734.4 km'
     body_facts["Lapetus"]["Apoapsis:"] = '3,662,193.9224 km'
     body_facts["Lapetus"]["Periapsis:"] = '3,464,907.2105 km'
     body_facts["Lapetus"]["Semi-major Axis:"] = '3,560,820 km'
     body_facts["Lapetus"]["Orbital Period:"] = '79d 7h 42m 57.6s (sidereal)'
     body_facts["Lapetus"]["Mean Orbital Velocity:"] = '3.265 km/s'
     body_facts["Lapetus"]["Synodic Rotation:"] = 'synchronous (tidally locked)'
-}
 
+    // Uranian Moons
+    body_facts["Titania"] = {}
+    body_facts["Titania"]["Names:"] = "Titania, Uranus III"
+    body_facts["Titania"]["Mass:"] = "3.455 * 10^21 kg"
+    body_facts["Titania"]["Mean Radius:"] = '788.4 km'
+    body_facts["Titania"]["Apoapsis:"] = '436,390.03 km'
+    body_facts["Titania"]["Periapsis:"] = '435,431.03 km'
+    body_facts["Titania"]["Semi-major Axis:"] = '435,910 km'
+    body_facts["Titania"]["Orbital Period:"] = '8d 16h 56m 58.6s (sidereal)'
+    body_facts["Titania"]["Mean Orbital Velocity:"] = '3.64 km/s'
+    body_facts["Titania"]["Synodic Rotation:"] = 'presumed synchronous (tidally locked)'
+
+    body_facts["Oberon"] = {}
+    body_facts["Oberon"]["Names:"] = "Oberon, Uranus IV"
+    body_facts["Oberon"]["Mass:"] = "3.1104 * 10^21 kg"
+    body_facts["Oberon"]["Mean Radius:"] = '761.4 km'
+    body_facts["Oberon"]["Apoapsis:"] = '584,338.1 km'
+    body_facts["Oberon"]["Periapsis:"] = '582,704.2 km'
+    body_facts["Oberon"]["Semi-major Axis:"] = '583,520 km'
+    body_facts["Oberon"]["Orbital Period:"] = '13d 11h 7m 3.4s (sidereal)'
+    body_facts["Oberon"]["Mean Orbital Velocity:"] = '3.15 km/s'
+    body_facts["Oberon"]["Synodic Rotation:"] = 'presumed synchronous (tidally locked)'
+
+    body_facts["Umbriel"] = {}
+    body_facts["Umbriel"]["Names:"] = "Umbriel, Uranus II"
+    body_facts["Umbriel"]["Mass:"] = "1.2885 * 10^21 kg"
+    body_facts["Umbriel"]["Mean Radius:"] = '584.7 km'
+    body_facts["Umbriel"]["Apoapsis:"] = '267041.46 km'
+    body_facts["Umbriel"]["Periapsis:"] = '264966.63 km'
+    body_facts["Umbriel"]["Semi-major Axis:"] = '266,000 km'
+    body_facts["Umbriel"]["Orbital Period:"] = '4d 3h 27m 21.6s (sidereal)'
+    body_facts["Umbriel"]["Mean Orbital Velocity:"] = '4.67 km/s'
+    body_facts["Umbriel"]["Synodic Rotation:"] = 'presumed synchronous (tidally locked)'
+
+    body_facts["Ariel"] = {}
+    body_facts["Ariel"]["Names:"] = "Ariel, Uranus I"
+    body_facts["Ariel"]["Mass:"] = "1.2331 * 10^21 kg"
+    body_facts["Ariel"]["Mean Radius:"] = '578.9 km'
+    body_facts["Ariel"]["Apoapsis:"] = ' km'
+    body_facts["Ariel"]["Periapsis:"] = ' km'
+    body_facts["Ariel"]["Semi-major Axis:"] = '190,900 km'
+    body_facts["Ariel"]["Orbital Period:"] = '2d 12h 28m 48s (sidereal)'
+    body_facts["Ariel"]["Mean Orbital Velocity:"] = '5.51 km/s'
+    body_facts["Ariel"]["Synodic Rotation:"] = 'synchronous (tidally locked)'
+
+    body_facts["Miranda"] = {}
+    body_facts["Miranda"]["Names:"] = "Miranda, Uranus V"
+    body_facts["Miranda"]["Mass:"] = "6.293 * 10^19 kg"
+    body_facts["Miranda"]["Mean Radius:"] = '235.8 km'
+    body_facts["Miranda"]["Apoapsis:"] = ' km'
+    body_facts["Miranda"]["Periapsis:"] = ' km'
+    body_facts["Miranda"]["Semi-major Axis:"] = '129,390 km'
+    body_facts["Miranda"]["Orbital Period:"] = '1d 9h 55m 24.6s (sidereal)'
+    body_facts["Miranda"]["Mean Orbital Velocity:"] = '6.66 km/s'
+    body_facts["Miranda"]["Synodic Rotation:"] = 'synchronous (tidally locked)'
+
+    // Neptunian Moons
+    body_facts["Triton"] = {}
+    body_facts["Triton"]["Names:"] = "Triton"
+    body_facts["Triton"]["Mass:"] = "2.1389 * 10^22 kg"
+    body_facts["Triton"]["Mean Radius:"] = '1,353.4 km'
+    body_facts["Triton"]["Apoapsis:"] = '354,764.68 km'
+    body_facts["Triton"]["Periapsis:"] = '354,753.32 km'
+    body_facts["Triton"]["Semi-major Axis:"] = '354,759 km'
+    body_facts["Triton"]["Orbital Period:"] = '5d 21h 2m 40.2s (sidereal)'
+    body_facts["Triton"]["Mean Orbital Velocity:"] = '4.39 km/s'
+    body_facts["Triton"]["Synodic Rotation:"] = 'synchronous (tidally locked)'
+    body_facts["Triton"]["Sidereal Rotation:"] = '5d 21h 2m 53s'
+}
 
 function center_screen() {
     // let planet_offset = {}
@@ -340,7 +408,7 @@ function draw_background() {
         }
 
         push()
-        fill(255, 255, 255, 100)
+        fill(255, 255, 255, random(10, 100))
         circle(position.x, position.y, 2)
         pop()
     }

@@ -39,7 +39,7 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 330100000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 1000,
         color: [156, 156, 156],
@@ -54,7 +54,7 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 4867300000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 1000,
         color: [191, 179, 145],
@@ -70,7 +70,7 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 5972200000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 5000,
         color: [101, 144, 252],
@@ -85,7 +85,7 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 73646000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 1000,
         color: [100, 100, 100],
@@ -104,7 +104,7 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 639000000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 100000,
         color: [161, 91, 67],
@@ -119,7 +119,7 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 10600000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 1000,
         color: [100, 100, 100],
@@ -135,7 +135,7 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 1500000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 1000,
         color: [100, 100, 100],
@@ -154,7 +154,7 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 1898130000000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 15,
         child_radius: 2,
         focus_scale: 1000,
         color: [242, 189, 148],
@@ -169,7 +169,7 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 148190000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 1000,
         color: [191, 182, 157],
@@ -185,7 +185,7 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 107593800000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 1000,
         color: [142, 146, 158],
@@ -201,7 +201,7 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 89319380000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 1000,
         color: [252, 238, 179],
@@ -217,7 +217,7 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 47998400000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 1000,
         color: [219, 247, 255],
@@ -234,9 +234,9 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 568320000000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
-        focus_scale: 1000,
+        focus_scale: 3000,
         color: [255, 228, 207],
         parents: [planet_data.sun],
         children: []
@@ -249,10 +249,10 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 134518000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 100,
-        color: [205, 178, 197],
+        color: [141, 134, 145],
         parents: [saturn, planet_data.sun],
         children: []
     }
@@ -265,10 +265,10 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 2306485400000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 100,
-        color: [255, 200, 247],
+        color: [101, 102, 125],
         parents: [saturn, planet_data.sun],
         children: []
     }
@@ -281,10 +281,10 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 108031800000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 100,
-        color: [205, 178, 77],
+        color: [77, 67, 67],
         parents: [saturn, planet_data.sun],
         children: []
     }
@@ -297,10 +297,10 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 37509400000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 100,
-        color: [120, 238, 227],
+        color: [138, 109, 109],
         parents: [saturn, planet_data.sun],
         children: []
     }
@@ -313,10 +313,10 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 617490000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 100,
-        color: [225, 108, 247],
+        color: [143, 143, 143],
         parents: [saturn, planet_data.sun],
         children: []
     }
@@ -329,10 +329,10 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 1095486800000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 1000,
-        color: [205, 208, 107],
+        color: [144, 173, 167],
         parents: [saturn, planet_data.sun],
         children: []
     }
@@ -345,10 +345,10 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 1805650000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
         focus_scale: 1000,
-        color: [225, 178, 247],
+        color: [181, 155, 136],
         parents: [saturn, planet_data.sun],
         children: []
     }
@@ -362,14 +362,95 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 86811000000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
-        focus_scale: 1000,
-        color: [0,0,220],
+        focus_scale: 2000,
+        color: [136, 194, 227],
         parents: [planet_data.sun],
         children: []
     }
     add_planet(uranus)
+    let titania = {
+        name: "Titania",
+        position: createVector(0, (2882000000000 + 435910000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (6790 + 3640) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 3455000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 10,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [141, 134, 145],
+        parents: [uranus, planet_data.sun],
+        children: []
+    }
+    add_planet(titania)
+    uranus.children.push(titania)
+    let oberon = {
+        name: "Oberon",
+        position: createVector(0, (2882000000000 + 583520000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (6790 + 3150) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 3110400000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 10,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [206, 220, 242],
+        parents: [uranus, planet_data.sun],
+        children: []
+    }
+    add_planet(oberon)
+    uranus.children.push(oberon)
+    let umbriel = {
+        name: "Umbriel",
+        position: createVector(0, (2882000000000 + 266000000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (6790 + 4670) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 1288500000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 10,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [168, 168, 168],
+        parents: [uranus, planet_data.sun],
+        children: []
+    }
+    add_planet(umbriel)
+    uranus.children.push(umbriel)
+    let ariel = {
+        name: "Ariel",
+        position: createVector(0, (2882000000000 + 190900000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (6790 + 5510) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 1233100000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 10,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [177, 199, 185],
+        parents: [uranus, planet_data.sun],
+        children: []
+    }
+    add_planet(ariel)
+    uranus.children.push(ariel)
+    let miranda = {
+        name: "Miranda",
+        position: createVector(0, (2882000000000 + 129390000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (6790 + 6660) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 62930000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 10,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [168, 151, 158],
+        parents: [uranus, planet_data.sun],
+        children: []
+    }
+    add_planet(miranda)
+    uranus.children.push(miranda)
+
     let neptune = {
         name: "Neptune",
         position: createVector(0, 4510000000000 / UNIVERSE_SCALE, 0),
@@ -377,14 +458,30 @@ function init_planets() {
         accel: createVector(0,0,0),
         mass: 102409000000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
-        zoomed_radius: 5,
+        zoomed_radius: 10,
         child_radius: 2,
-        focus_scale: 1000,
-        color: [50,0,255],
+        focus_scale: 3000,
+        color: [66, 116, 201],
         parents: [planet_data.sun],
         children: []
     }
     add_planet(neptune)
+    let triton = {
+        name: "Triton",
+        position: createVector(0, (4510000000000 + 354759000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (5450 + 4390) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 21389000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 10,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [125,120,150],
+        parents: [neptune, planet_data.sun],
+        children: []
+    }
+    add_planet(triton)
+    neptune.children.push(triton)
 
     planet_data.sun.children.push(mercury)
     planet_data.sun.children.push(venus)
@@ -420,13 +517,16 @@ function draw_rings(body) {
     noFill()
     
     strokeWeight(body.draw_radius - 1)
-    stroke(120, 120, 152)
+    stroke(150, 131, 95)
     circle(0,0, body.draw_radius * 3.5)
 
-    strokeWeight(body.draw_radius - 2)
-    stroke(40, 70, 65)
+    strokeWeight(body.draw_radius - 7)
+    stroke(189, 173, 143)
     circle(0,0, body.draw_radius * 3.5)
 
+    strokeWeight(body.draw_radius - 10)
+    stroke(179, 176, 152)
+    circle(0,0, body.draw_radius * 3.5)
 
     pop()
 
