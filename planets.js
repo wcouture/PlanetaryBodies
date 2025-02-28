@@ -114,7 +114,7 @@ function init_planets() {
     add_planet(mars)
     let phobos = {
         name: "Phobos",
-        position: createVector(0, (225000000000 + 9367000) / UNIVERSE_SCALE, 0),
+        position: createVector(0, (225000000000 + 9376000) / UNIVERSE_SCALE, 0),
         velocity: createVector( (24080 + 2138) / (UNIVERSE_SCALE / 3), 0, 0),
         accel: createVector(0,0,0),
         mass: 10600000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
@@ -130,7 +130,7 @@ function init_planets() {
     mars.children.push(phobos)
     let deimos = {
         name: "Deimos",
-        position: createVector(0, (225000000000 + 23463000) / UNIVERSE_SCALE, 0),
+        position: createVector(0, (225000000000 + 23463200) / UNIVERSE_SCALE, 0),
         velocity: createVector( (24080 + 1351) / (UNIVERSE_SCALE / 3), 0, 0),
         accel: createVector(0,0,0),
         mass: 1500000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
@@ -251,8 +251,8 @@ function init_planets() {
         draw_radius: 2,
         zoomed_radius: 5,
         child_radius: 2,
-        focus_scale: 1000,
-        color: [255, 228, 207],
+        focus_scale: 100,
+        color: [205, 178, 197],
         parents: [saturn, planet_data.sun],
         children: []
     }
@@ -267,8 +267,8 @@ function init_planets() {
         draw_radius: 2,
         zoomed_radius: 5,
         child_radius: 2,
-        focus_scale: 1000,
-        color: [255, 228, 207],
+        focus_scale: 100,
+        color: [255, 200, 247],
         parents: [saturn, planet_data.sun],
         children: []
     }
@@ -277,19 +277,83 @@ function init_planets() {
     let enceladus = {
         name: "Enceladus",
         position: createVector(0, (1420000000000 + 237948000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (9670 + 12640) / (UNIVERSE_SCALE / 3), 0, 0),
+        velocity: createVector( (9670 + 12635) / (UNIVERSE_SCALE / 3), 0, 0),
         accel: createVector(0,0,0),
         mass: 108031800000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
         draw_radius: 2,
         zoomed_radius: 5,
         child_radius: 2,
-        focus_scale: 1000,
-        color: [255, 228, 207],
+        focus_scale: 100,
+        color: [205, 178, 77],
         parents: [saturn, planet_data.sun],
         children: []
     }
     add_planet(enceladus)
     saturn.children.push(enceladus)
+    let mimas = {
+        name: "Mimas",
+        position: createVector(0, (1420000000000 + 185539000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (9670 + 12280) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 37509400000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 5,
+        child_radius: 2,
+        focus_scale: 100,
+        color: [120, 238, 227],
+        parents: [saturn, planet_data.sun],
+        children: []
+    }
+    add_planet(mimas)
+    saturn.children.push(mimas)
+    let tethys = {
+        name: "Tethys",
+        position: createVector(0, (1420000000000 + 294619000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (9670 + 11350) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 617490000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 5,
+        child_radius: 2,
+        focus_scale: 100,
+        color: [225, 108, 247],
+        parents: [saturn, planet_data.sun],
+        children: []
+    }
+    add_planet(tethys)
+    saturn.children.push(tethys)
+    let dione = {
+        name: "Dione",
+        position: createVector(0, (1420000000000 + 377396000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (9670 + 10028) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 1095486800000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 5,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [205, 208, 107],
+        parents: [saturn, planet_data.sun],
+        children: []
+    }
+    add_planet(dione)
+    saturn.children.push(dione)
+    let lapetus = {
+        name: "Lapetus",
+        position: createVector(0, (1420000000000 + 3560820000) / UNIVERSE_SCALE, 0),
+        velocity: createVector( (9670 + 3265) / (UNIVERSE_SCALE / 3), 0, 0),
+        accel: createVector(0,0,0),
+        mass: 1805650000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: 2,
+        zoomed_radius: 5,
+        child_radius: 2,
+        focus_scale: 1000,
+        color: [225, 178, 247],
+        parents: [saturn, planet_data.sun],
+        children: []
+    }
+    add_planet(lapetus)
+    saturn.children.push(lapetus)
 
     let uranus = {
         name: "Uranus",

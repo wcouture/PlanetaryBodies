@@ -132,23 +132,166 @@ function init_body_facts() {
     body_facts["Neptune"]["Synodic Rotation:"] = '16h 6m 36s'
     body_facts["Neptune"]["Sidereal Rotation:"] = '16h 6m 36s'
 
+    // The Moon
     body_facts["Moon"] = {}
+    body_facts["Moon"]["Names:"] = "Moon, Luna, Selene, Cynthia"
+    body_facts["Moon"]["Mass:"] = "7.346 * 10^22 kg"
+    body_facts["Moon"]["Equitorial Radius:"] = '1,738.1 km'
+    body_facts["Moon"]["Apogee:"] = '405,400 km'
+    body_facts["Moon"]["Perigee:"] = '362,600 km'
+    body_facts["Moon"]["Semi-major Axis:"] = '384,399 km'
+    body_facts["Moon"]["Orbital Period:"] = '27d 7h 43m 11.5s (sidereal) or 29d 12h 44m 2.9s (synodic)'
+    body_facts["Moon"]["Mean Orbital Velocity:"] = '1.022 km/s'
+    body_facts["Moon"]["Synodic Rotation:"] = '29d 12h 44m 2.9s (tidally locked)'
+    body_facts["Moon"]["Sidereal Rotation:"] = '27d 7h 43m 11.5s (tidally locked)'
 
+    // Martian Moons
     body_facts["Deimos"] = {}
+    body_facts["Deimos"]["Names:"] = "Deimos"
+    body_facts["Deimos"]["Mass:"] = "1.51 * 10^15 kg"
+    body_facts["Deimos"]["Equitorial Radius:"] = '6.27 km'
+    body_facts["Deimos"]["Apoapsis:"] = '23,455.5 km'
+    body_facts["Deimos"]["Periapsis:"] = '23,470.9 km'
+    body_facts["Deimos"]["Semi-major Axis:"] = '23,463.2 km'
+    body_facts["Deimos"]["Orbital Period:"] = '1d 6h 18m 43.2s (sidereal)'
+    body_facts["Deimos"]["Mean Orbital Velocity:"] = '1.3513 km/s'
+    body_facts["Deimos"]["Sidereal Period:"] = 'synchronous (tidally locked)'
+    
     body_facts["Phobos"] = {}
+    body_facts["Phobos"]["Names:"] = "Phobos"
+    body_facts["Phobos"]["Mass:"] = "1.060 * 10^16 kg"
+    body_facts["Phobos"]["Equitorial Radius:"] = '11.08 km'
+    body_facts["Phobos"]["Apoapsis:"] = '9,517.58 km'
+    body_facts["Phobos"]["Periapsis:"] = '9,234.42 km'
+    body_facts["Phobos"]["Semi-major Axis:"] = '9,376 km'
+    body_facts["Phobos"]["Orbital Period:"] = '7h 39m 12s (sidereal)'
+    body_facts["Phobos"]["Mean Orbital Velocity:"] = '2.138 km/s'
+    body_facts["Phobos"]["Sidereal Period:"] = 'synchronous (tidally locked)'
 
+    // Jovian Moons
     body_facts["Io"] = {}
+    body_facts["Io"]["Names:"] = "Io, Jupiter I"
+    body_facts["Io"]["Mass:"] = "8.931938 * 10^22 kg"
+    body_facts["Io"]["Equitorial Radius:"] = '1,821.6 km'
+    body_facts["Io"]["Apoapsis:"] = '423,400 km'
+    body_facts["Io"]["Periapsis:"] = '420,000 km'
+    body_facts["Io"]["Semi-major Axis:"] = '421,700 km'
+    body_facts["Io"]["Orbital Period:"] = '1d 18h 27m 33.505s (sidereal)'
+    body_facts["Io"]["Mean Orbital Velocity:"] = '1.022 km/s'
+    body_facts["Io"]["Synodic Period:"] = 'synchronous (tidally locked)'
+
     body_facts["Europa"] = {}
+    body_facts["Europa"]["Names:"] = "Europa, Jupiter II"
+    body_facts["Europa"]["Mass:"] = "4.79984 * 10^22 kg"
+    body_facts["Europa"]["Equitorial Radius:"] = '1,560.8 km'
+    body_facts["Europa"]["Apoapsis:"] = '679,938 km'
+    body_facts["Europa"]["Periapsis:"] = '664,862 km'
+    body_facts["Europa"]["Semi-major Axis:"] = '670,900 km'
+    body_facts["Europa"]["Orbital Period:"] = '3d 13h 13m 42.04s (sidereal)'
+    body_facts["Europa"]["Mean Orbital Velocity:"] = '13.74336 km/s'
+    body_facts["Europa"]["Synodic Period:"] = 'synchronous (tidally locked)'
+
     body_facts["Ganymede"] = {}
+    body_facts["Ganymede"]["Names:"] = "Ganymede, Jupiter III"
+    body_facts["Ganymede"]["Mass:"] = "1.4819 * 10^23 kg"
+    body_facts["Ganymede"]["Equitorial Radius:"] = '2,643.1 km'
+    body_facts["Ganymede"]["Apoapsis:"] = '1,071,600 km'
+    body_facts["Ganymede"]["Periapsis:"] = '1,069,200 km'
+    body_facts["Ganymede"]["Semi-major Axis:"] = '1,070,400 km'
+    body_facts["Ganymede"]["Orbital Period:"] = '7d 3h 42m 33.38s (sidereal)'
+    body_facts["Ganymede"]["Mean Orbital Velocity:"] = '10.880 km/s'
+    body_facts["Ganymede"]["Synodic Period:"] = 'synchronous (tidally locked)'
+    
     body_facts["Callisto"] = {}
+    body_facts["Callisto"]["Names:"] = "Callisto, Jupiter IV"
+    body_facts["Callisto"]["Mass:"] = "1.075938 * 10^23 kg"
+    body_facts["Callisto"]["Equitorial Radius:"] = '2,410.3 km'
+    body_facts["Callisto"]["Apoapsis:"] = '1,897,000 km'
+    body_facts["Callisto"]["Periapsis:"] = '1,869,000 km'
+    body_facts["Callisto"]["Semi-major Axis:"] = '1,882,700 km'
+    body_facts["Callisto"]["Orbital Period:"] = '16d 16h 32m 11.19s (sidereal)'
+    body_facts["Callisto"]["Mean Orbital Velocity:"] = '1.022 km/s'
+    body_facts["Callisto"]["Synodic Period:"] = 'synchronous (tidally locked)'
 
+    // Saturnian Moons
     body_facts["Titan"] = {}
+    body_facts["Titan"]["Names:"] = "Titan"
+    body_facts["Titan"]["Mass:"] = "1.34518 * 10^23 kg"
+    body_facts["Titan"]["Equitorial Radius:"] = '2,574.73 km'
+    body_facts["Titan"]["Apoapsis:"] = '1,257,060 km'
+    body_facts["Titan"]["Periapsis:"] = '1,186,680 km'
+    body_facts["Titan"]["Semi-major Axis:"] = '1,221,870 km'
+    body_facts["Titan"]["Orbital Period:"] = '15d 22h 40m 48s (sidereal)'
+    body_facts["Titan"]["Mean Orbital Velocity:"] = '5.57 km/s'
+    body_facts["Titan"]["Synodic Rotation:"] = 'synchronous (tidally locked)'
+
     body_facts["Rhea"] = {}
+    body_facts["Rhea"]["Names:"] = "Rhea"
+    body_facts["Rhea"]["Mass:"] = "7.346 * 10^22 kg"
+    body_facts["Rhea"]["Equitorial Radius:"] = '1,738.1 km'
+    body_facts["Rhea"]["Apoapsis:"] = '527,567.57 km'
+    body_facts["Rhea"]["Periapsis:"] = '526,513.49 km'
+    body_facts["Rhea"]["Semi-major Axis:"] = '527,040 km'
+    body_facts["Rhea"]["Orbital Period:"] = '4d 12h 26m 13.52s (sidereal) or 29d 12h 44m 2.9s (synodic)'
+    body_facts["Rhea"]["Mean Orbital Velocity:"] = '8.48 km/s'
+    body_facts["Rhea"]["Synodic Rotation:"] = 'synchronous (tidally locked)'
+
     body_facts["Enceladus"] = {}
+    body_facts["Enceladus"]["Names:"] = "Enceladus"
+    body_facts["Enceladus"]["Mass:"] = "1.080318 * 10^20 kg"
+    body_facts["Enceladus"]["Equitorial Radius:"] = '252.1 km'
+    body_facts["Enceladus"]["Apoapsis:"] = '239,071.637 km'
+    body_facts["Enceladus"]["Periapsis:"] = '236,834.876 km'
+    body_facts["Enceladus"]["Semi-major Axis:"] = '237,948 km'
+    body_facts["Enceladus"]["Orbital Period:"] = '1d 8h 53m 6.84s (sidereal)'
+    body_facts["Enceladus"]["Mean Orbital Velocity:"] = '12.629 km/s'
+    body_facts["Enceladus"]["Synodic Rotation:"] = 'synchronous (tidally locked)'
 
+    body_facts["Mimas"] = {}
+    body_facts["Mimas"]["Names:"] = "Mimas"
+    body_facts["Mimas"]["Mass:"] = "3.75094 * 10^19 kg"
+    body_facts["Mimas"]["Equitorial Radius:"] = '198.2 km'
+    body_facts["Mimas"]["Apoapsis:"] = '189,179 km'
+    body_facts["Mimas"]["Periapsis:"] = '181,902 km'
+    body_facts["Mimas"]["Semi-major Axis:"] = '185,539 km'
+    body_facts["Mimas"]["Orbital Period:"] = '22h 37m 5.26s (sidereal)'
+    body_facts["Mimas"]["Mean Orbital Velocity:"] = '14.28 km/s'
+    body_facts["Mimas"]["Synodic Rotation:"] = 'synchronous (tidally locked)'
 
+    body_facts["Tethys"] = {}
+    body_facts["Tethys"]["Names:"] = "Tethys"
+    body_facts["Tethys"]["Mass:"] = "6.1749 * 10^20 kg"
+    body_facts["Tethys"]["Equitorial Radius:"] = '531.1 km'
+    body_facts["Tethys"]["Apoapsis:"] = '294,648.5 km'
+    body_facts["Tethys"]["Periapsis:"] = '294,589.5 km'
+    body_facts["Tethys"]["Semi-major Axis:"] = '294,619 km'
+    body_facts["Tethys"]["Orbital Period:"] = '1d 21h 18m 26.09s (sidereal)'
+    body_facts["Tethys"]["Mean Orbital Velocity:"] = '11.35 km/s'
+    body_facts["Tethys"]["Synodic Rotation:"] = 'synchronous (tidally locked)'
 
+    body_facts["Dione"] = {}
+    body_facts["Dione"]["Names:"] = "Dione"
+    body_facts["Dione"]["Mass:"] = "1.0954868 * 10^21 kg"
+    body_facts["Dione"]["Equitorial Radius:"] = '561.4 km'
+    body_facts["Dione"]["Apoapsis:"] = '378,228.102 km'
+    body_facts["Dione"]["Periapsis:"] = '376,567.551 km'
+    body_facts["Dione"]["Semi-major Axis:"] = '377,396 km'
+    body_facts["Dione"]["Orbital Period:"] = '2d 17h 41m 9.456s (sidereal)'
+    body_facts["Dione"]["Mean Orbital Velocity:"] = '10.028 km/s'
+    body_facts["Dione"]["Synodic Rotation:"] = 'synchronous (tidally locked)'
+
+    body_facts["Lapetus"] = {}
+    body_facts["Lapetus"]["Names:"] = "Lapetus"
+    body_facts["Lapetus"]["Mass:"] = "1.80565 * 10^21 kg"
+    body_facts["Lapetus"]["Equitorial Radius:"] = '734.4 km'
+    body_facts["Lapetus"]["Apoapsis:"] = '3,662,193.9224 km'
+    body_facts["Lapetus"]["Periapsis:"] = '3,464,907.2105 km'
+    body_facts["Lapetus"]["Semi-major Axis:"] = '3,560,820 km'
+    body_facts["Lapetus"]["Orbital Period:"] = '79d 7h 42m 57.6s (sidereal)'
+    body_facts["Lapetus"]["Mean Orbital Velocity:"] = '3.265 km/s'
+    body_facts["Lapetus"]["Synodic Rotation:"] = 'synchronous (tidally locked)'
 }
+
 
 function center_screen() {
     // let planet_offset = {}
