@@ -5,10 +5,14 @@ function init_sun() {
         name: "Sun",
         position: createVector(0,0,0),
         mass: 2000000000000000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 5,
-        zoomed_radius: 5,
-        child_radius: 2,
+        draw_radius: 8,
+        zoomed_radius: 10,
+        child_radius: 1,
+        focus_scale: 600000000,
         color: [222, 202, 0],
+        graphic: loadImage("assets/sun-graphic.png"),
+        rotation: 0,
+        rotate_time: 100000,
         children: []
     }
     planet_data.sun = sun;
@@ -22,9 +26,73 @@ function init_stars() {
 
 // Initializes scalar variables used in drawing and updating planets
 function init_scalars() {
-    planet_data.DRAW_SCALE = 1100000000
+    planet_data.MANUAL_SCALE_OFFSET = 1
+    planet_data.DRAW_SCALE = 800000000
     planet_data.SPEED_SCALE = 1000
     planet_data.UPDATE_ITERATIONS = 1
+    planet_data.focus_pos = createVector(0,0)
+}
+
+function create_planet(name, orbit_radius, velocity, mass, zoomed_radius, child_radius, focus_scale, color, rotate_time) {
+    let angle = random(0, TWO_PI)
+    let init_pos = createVector(cos(angle) * orbit_radius / UNIVERSE_SCALE, sin(angle) * orbit_radius / UNIVERSE_SCALE)
+    let init_vel = createVector(cos(angle - HALF_PI) * velocity / (UNIVERSE_SCALE / 3), sin(angle - HALF_PI) * velocity / (UNIVERSE_SCALE / 3))
+
+    let graphic_path = "assets/" + name.toLowerCase() + "-graphic.png"
+
+    let planet = {
+        name: name,
+        position: init_pos,
+        velocity: init_vel,
+        accel: createVector(0,0,0),
+        mass: mass / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: planet_data.sun.child_radius,
+        zoomed_radius: zoomed_radius,
+        child_radius: child_radius,
+        focus_scale: focus_scale,
+        color: color,
+        graphic: loadImage(graphic_path, (img) => {}, (event)=> {
+            planet.graphic = undefined
+        }),
+        rotation: 0,
+        rotate_time: rotate_time,
+        parents: [planet_data.sun],
+        children: []
+    }
+    add_planet(planet)
+    planet_data.sun.children.push(planet)
+
+    return planet
+}
+
+function create_moon(parent, name, orbit_radius, velocity, mass, zoomed_radius, child_radius, focus_scale, color, rotate_time) {
+    let angle = atan2(parent.position.y, parent.position.x)
+    let init_pos = createVector((cos(angle) * orbit_radius / UNIVERSE_SCALE) + parent.position.x, (sin(angle) * orbit_radius / UNIVERSE_SCALE) + parent.position.y)
+    let init_vel = createVector((cos(angle - HALF_PI) * velocity / (UNIVERSE_SCALE / 3)) + parent.velocity.x, (sin(angle - HALF_PI) * velocity / (UNIVERSE_SCALE / 3)) + parent.velocity.y)
+
+    let graphic_path = "assets/" + name.toLowerCase() + "-graphic.png"
+
+    let planet = {
+        name: name,
+        position: init_pos,
+        velocity: init_vel,
+        accel: createVector(0,0,0),
+        mass: mass / (UNIVERSE_SCALE*UNIVERSE_SCALE),
+        draw_radius: planet_data.sun.child_radius,
+        zoomed_radius: zoomed_radius,
+        child_radius: child_radius,
+        focus_scale: focus_scale,
+        color: color,
+        graphic: loadImage(graphic_path, (img) => {}, (event)=> {
+            planet.graphic = undefined
+        }),
+        rotation: 0,
+        rotate_time: rotate_time,
+        parents: [parent, planet_data.sun],
+        children: []
+    }
+    add_planet(planet)
+    parent.children.push(planet)
 }
 
 function init_planets() {
@@ -32,467 +100,98 @@ function init_planets() {
 
     planet_data.planets = []
 
-    let mercury = {
-        name: "Mercury",
-        position: createVector(0, 55200000000 / UNIVERSE_SCALE, 0),
-        velocity: createVector( 47360 / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 330100000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [156, 156, 156],
-        parents: [planet_data.sun],
-        children: []
-    }
-    add_planet(mercury)
-    let venus = {
-        name: "Venus",
-        position: createVector(0, 108200000000 / UNIVERSE_SCALE, 0),
-        velocity: createVector( 35020 / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 4867300000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [191, 179, 145],
-        parents: [planet_data.sun],
-        children: []
-    }
-    add_planet(venus)
+    let mercury_color = [156, 156, 156]
+    create_planet("Mercury", 55200000000, 47360, 330100000000000000000000, 10, 2, 1000, mercury_color, 86400)
 
-    let earth = {
-        name: "Earth",
-        position: createVector(0, 149000000000 / UNIVERSE_SCALE, 0),
-        velocity: createVector( 29780 / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 5972200000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 5000,
-        color: [101, 144, 252],
-        parents: [planet_data.sun],
-        children: []
-    }
-    add_planet(earth)
-    let moon = {
-        name: "Moon",
-        position: createVector(0, (149000000000 + 384400000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (29780 + 1082) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 73646000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [100, 100, 100],
-        parents: [earth, planet_data.sun],
-        children: []
-    }
-    add_planet(moon)
-    earth.children.push(moon)
+    let venus_color = [191, 179, 145]
+    create_planet("Venus", 108200000000, 35020, 4867300000000000000000000, 10, 2, 1000, venus_color, 86400)
 
+    // Earth system ----------------------------------------------------------------
+    let earth_color = [101, 144, 252]
+    let earth = create_planet("Earth", 149000000000, 29780, 5972200000000000000000000, 14, 6, 5000, earth_color, 86400)
+    
+    let moon_color = [100, 100, 100]
+    create_moon(earth, "Moon", 384400000, 1082, 73646000000000000000000, 22, 2, 100, moon_color, 2378642.9)
 
+    // Martian system ----------------------------------------------------------------
+    let mars_color = [161, 91, 67]
+    let mars = create_planet("Mars", 225000000000, 24080, 639000000000000000000000, 20, 2, 100000, mars_color, 88656)
 
-    let mars = {
-        name: "Mars",
-        position: createVector(0, 225000000000 / UNIVERSE_SCALE, 0),
-        velocity: createVector( 24080 / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 639000000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 100000,
-        color: [161, 91, 67],
-        parents: [planet_data.sun],
-        children: []
-    }
-    add_planet(mars)
-    let phobos = {
-        name: "Phobos",
-        position: createVector(0, (225000000000 + 9376000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (24080 + 2138) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 10600000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [100, 100, 100],
-        parents: [mars, planet_data.sun],
-        children: []
-    }
-    add_planet(phobos)
-    mars.children.push(phobos)
-    let deimos = {
-        name: "Deimos",
-        position: createVector(0, (225000000000 + 23463200) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (24080 + 1351) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 1500000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [100, 100, 100],
-        parents: [mars, planet_data.sun],
-        children: []
-    }
-    add_planet(deimos)
-    mars.children.push(deimos)
+    let phobos_color = [100, 100, 100]
+    create_moon(mars, "Phobos", 9376000, 2138, 10600000000000000, 15, 2, 1000, phobos_color, 27552)
 
+    let deimos_color = [100, 100, 100]
+    create_moon(mars, "Deimos", 23463200, 1351, 1500000000000000, 15, 2, 1000, deimos_color, 109123.2)
 
+    // Jovian system ----------------------------------------------------------------
+    let jupiter_color = [242, 189, 148]
+    let jupiter = create_planet("Jupiter", 775000000000, 13060, 1898130000000000000000000000, 15, 2, 2000, jupiter_color, 0)
 
-    let jupiter = {
-        name: "Jupiter",
-        position: createVector(0, 775000000000 / UNIVERSE_SCALE, 0),
-        velocity: createVector( 13060 / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 1898130000000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 15,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [242, 189, 148],
-        parents: [planet_data.sun],
-        children: []
-    }
-    add_planet(jupiter)
-    let ganymede = {
-        name: "Ganymede",
-        position: createVector(0, (775000000000 + 1070400000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (13060 + 10880) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 148190000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [191, 182, 157],
-        parents: [jupiter, planet_data.sun],
-        children: []
-    }
-    add_planet(ganymede)
-    jupiter.children.push(ganymede)
-    let callisto = {
-        name: "Callisto",
-        position: createVector(0, (775000000000 + 1882700000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (13060 + 8204) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 107593800000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [142, 146, 158],
-        parents: [jupiter, planet_data.sun],
-        children: []
-    }
-    add_planet(callisto)
-    jupiter.children.push(callisto)
-    let io = {
-        name: "Io",
-        position: createVector(0, (775000000000 + 421700000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (13060 + 17334) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 89319380000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [252, 238, 179],
-        parents: [jupiter, planet_data.sun],
-        children: []
-    }
-    add_planet(io)
-    jupiter.children.push(io)
-    let europa = {
-        name: "Europa",
-        position: createVector(0, (775000000000 + 670900000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (13060 + 13743) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 47998400000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [219, 247, 255],
-        parents: [jupiter, planet_data.sun],
-        children: []
-    }
-    add_planet(europa)
-    jupiter.children.push(europa)
+    let ganymede_color = [191, 182, 157]
+    create_moon(jupiter, "Ganymede", 1070400000, 10880, 148190000000000000000000, 10, 2, 1000, ganymede_color, 0)
 
-    let saturn = {
-        name: "Saturn",
-        position: createVector(0, 1420000000000 / UNIVERSE_SCALE, 0),
-        velocity: createVector( 9670 / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 568320000000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 3000,
-        color: [255, 228, 207],
-        parents: [planet_data.sun],
-        children: []
-    }
-    add_planet(saturn)
-    let titan = {
-        name: "Titan",
-        position: createVector(0, (1420000000000 + 1221870000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (9670 + 5570) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 134518000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 100,
-        color: [141, 134, 145],
-        parents: [saturn, planet_data.sun],
-        children: []
-    }
-    add_planet(titan)
-    saturn.children.push(titan)
-    let rhea = {
-        name: "Rhea",
-        position: createVector(0, (1420000000000 + 527040000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (9670 + 8480) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 2306485400000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 100,
-        color: [101, 102, 125],
-        parents: [saturn, planet_data.sun],
-        children: []
-    }
-    add_planet(rhea)
-    saturn.children.push(rhea)
-    let enceladus = {
-        name: "Enceladus",
-        position: createVector(0, (1420000000000 + 237948000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (9670 + 12635) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 108031800000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 100,
-        color: [77, 67, 67],
-        parents: [saturn, planet_data.sun],
-        children: []
-    }
-    add_planet(enceladus)
-    saturn.children.push(enceladus)
-    let mimas = {
-        name: "Mimas",
-        position: createVector(0, (1420000000000 + 185539000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (9670 + 12280) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 37509400000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 100,
-        color: [138, 109, 109],
-        parents: [saturn, planet_data.sun],
-        children: []
-    }
-    add_planet(mimas)
-    saturn.children.push(mimas)
-    let tethys = {
-        name: "Tethys",
-        position: createVector(0, (1420000000000 + 294619000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (9670 + 11350) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 617490000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 100,
-        color: [143, 143, 143],
-        parents: [saturn, planet_data.sun],
-        children: []
-    }
-    add_planet(tethys)
-    saturn.children.push(tethys)
-    let dione = {
-        name: "Dione",
-        position: createVector(0, (1420000000000 + 377396000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (9670 + 10028) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 1095486800000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [144, 173, 167],
-        parents: [saturn, planet_data.sun],
-        children: []
-    }
-    add_planet(dione)
-    saturn.children.push(dione)
-    let lapetus = {
-        name: "Lapetus",
-        position: createVector(0, (1420000000000 + 3560820000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (9670 + 3265) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 1805650000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [181, 155, 136],
-        parents: [saturn, planet_data.sun],
-        children: []
-    }
-    add_planet(lapetus)
-    saturn.children.push(lapetus)
+    let callisto_color = [142, 146, 158]
+    create_moon(jupiter, "Ganymede", 1882700000, 8204, 107593800000000000000000, 10, 2, 1000, callisto_color, 0)
+    
+    let io_color = [252, 238, 179]
+    create_moon(jupiter, "Io", 421700000, 17334, 89319380000000000000000, 10, 2, 1000, io_color, 0)
+    
+    let europa_color = [219, 247, 255]
+    create_moon(jupiter, "Europa", 670900000, 13743, 47998400000000000000000, 10, 2, 1000, europa_color, 0)
 
-    let uranus = {
-        name: "Uranus",
-        position: createVector(0, 2882000000000 / UNIVERSE_SCALE, 0),
-        velocity: createVector( 6790 / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 86811000000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 2000,
-        color: [136, 194, 227],
-        parents: [planet_data.sun],
-        children: []
-    }
-    add_planet(uranus)
-    let titania = {
-        name: "Titania",
-        position: createVector(0, (2882000000000 + 435910000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (6790 + 3640) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 3455000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [141, 134, 145],
-        parents: [uranus, planet_data.sun],
-        children: []
-    }
-    add_planet(titania)
-    uranus.children.push(titania)
-    let oberon = {
-        name: "Oberon",
-        position: createVector(0, (2882000000000 + 583520000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (6790 + 3150) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 3110400000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [206, 220, 242],
-        parents: [uranus, planet_data.sun],
-        children: []
-    }
-    add_planet(oberon)
-    uranus.children.push(oberon)
-    let umbriel = {
-        name: "Umbriel",
-        position: createVector(0, (2882000000000 + 266000000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (6790 + 4670) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 1288500000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [168, 168, 168],
-        parents: [uranus, planet_data.sun],
-        children: []
-    }
-    add_planet(umbriel)
-    uranus.children.push(umbriel)
-    let ariel = {
-        name: "Ariel",
-        position: createVector(0, (2882000000000 + 190900000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (6790 + 5510) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 1233100000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [177, 199, 185],
-        parents: [uranus, planet_data.sun],
-        children: []
-    }
-    add_planet(ariel)
-    uranus.children.push(ariel)
-    let miranda = {
-        name: "Miranda",
-        position: createVector(0, (2882000000000 + 129390000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (6790 + 6660) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 62930000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [168, 151, 158],
-        parents: [uranus, planet_data.sun],
-        children: []
-    }
-    add_planet(miranda)
-    uranus.children.push(miranda)
+    // Saturnian system ----------------------------------------------------------------
+    let saturn_color = [255, 228, 207]
+    let saturn = create_planet("Saturn", 1420000000000, 9670, 568320000000000000000000000, 10, 2, 3000, saturn_color, 0)
+    
+    let titan_color = [141, 134, 145]
+    create_moon(saturn, "Titan", 1221870000, 5570, 134518000000000000000000, 10, 2, 100, titan_color, 0)
 
-    let neptune = {
-        name: "Neptune",
-        position: createVector(0, 4510000000000 / UNIVERSE_SCALE, 0),
-        velocity: createVector( 5450 / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 102409000000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 3000,
-        color: [66, 116, 201],
-        parents: [planet_data.sun],
-        children: []
-    }
-    add_planet(neptune)
-    let triton = {
-        name: "Triton",
-        position: createVector(0, (4510000000000 + 354759000) / UNIVERSE_SCALE, 0),
-        velocity: createVector( (5450 + 4390) / (UNIVERSE_SCALE / 3), 0, 0),
-        accel: createVector(0,0,0),
-        mass: 21389000000000000000000 / (UNIVERSE_SCALE*UNIVERSE_SCALE),
-        draw_radius: 2,
-        zoomed_radius: 10,
-        child_radius: 2,
-        focus_scale: 1000,
-        color: [125,120,150],
-        parents: [neptune, planet_data.sun],
-        children: []
-    }
-    add_planet(triton)
-    neptune.children.push(triton)
+    let rhea_color = [101, 102, 125]
+    create_moon(saturn, "Rhea", 527040000, 8480, 2306485400000000000000, 10, 2, 100, rhea_color, 0)
 
-    planet_data.sun.children.push(mercury)
-    planet_data.sun.children.push(venus)
-    planet_data.sun.children.push(earth)
-    planet_data.sun.children.push(mars)
-    planet_data.sun.children.push(jupiter)
-    planet_data.sun.children.push(saturn)
-    planet_data.sun.children.push(uranus)
-    planet_data.sun.children.push(neptune)
+    let enceladus_color = [77, 67, 67]
+    create_moon(saturn, "Enceladus", 237948000, 12635, 108031800000000000000, 10, 2, 100, enceladus_color, 0)
+
+    let mimas_color = [138, 109, 109]
+    create_moon(saturn, "Mimas", 185539000, 12280, 37509400000000000000, 10, 2, 100, mimas_color, 0)
+
+    let tethys_color = [143, 143, 143]
+    create_moon(saturn, "Tethys", 294619000, 11350, 617490000000000000000, 10, 2, 100, tethys_color, 0)
+
+    let dione_color = [144, 173, 167]
+    create_moon(saturn, "Dione", 377396000, 10028, 1095486800000000000000, 10, 2, 1000, dione_color, 0)
+
+    let lapetus_color = [181, 155, 136]
+    create_moon(saturn, "Lapetus", 3560820000, 3265, 1805650000000000000000, 10, 2, 1000, lapetus_color, 0)
+
+    // Uranian system ----------------------------------------------------------------
+    let uranus_color = [136, 194, 227]
+    let uranus = create_planet("Uranus", 2882000000000, 6790, 86811000000000000000000000, 10, 2, 5000, uranus_color, 0)
+
+    let titania_color = [141, 134, 145]
+    create_moon(uranus, "Titania", 435910000, 3640, 3455000000000000000000, 10, 2, 1000, titania_color, 0)
+
+    let oberon_color = [206, 220, 242]
+    create_moon(uranus, "Oberon", 583520000, 3150, 3110400000000000000000, 10, 2, oberon_color, 0)
+
+    let umbriel_color = [168, 168, 168]
+    create_moon(uranus, "Umbriel", 266000000, 4670, 1288500000000000000000, 10, 2, 1000, umbriel_color, 0)
+
+    let ariel_color = [177, 199, 185]
+    create_moon(uranus, "Ariel", 190900000, 5510, 1233100000000000000000, 10, 2, 1000, ariel_color, 0)
+
+    let miranda_color = [168, 151, 158]
+    create_moon(uranus, "Miranda", 129390000, 6660, 62930000000000000000, 10, 2, 1000, miranda_color, 0)
+
+    // Neptunian system ----------------------------------------------------------------
+    let neptune_color = [66, 116, 201]
+    let neptune = create_planet("Neptune", 4510000000000, 5450, 102409000000000000000000000, 10, 2, 3000, neptune_color, 0)
+
+    let triton_color = [125,120,150]
+    create_moon(neptune, "Triton", 354759000, 4390, 21389000000000000000000, 10, 2, 1000, triton_color, 0)
 
     init_stars()
+    imageMode(CENTER)
 }
 
 function add_planet(planet) {
@@ -500,12 +199,30 @@ function add_planet(planet) {
 }
 
 function draw_body(body) {
-    let screen_x = (body.position.x - planet_data.selected_planet.position.x) / planet_data.DRAW_SCALE 
-    let screen_y = (body.position.y - planet_data.selected_planet.position.y) / planet_data.DRAW_SCALE
-    
+    let screen_x = (body.position.x - planet_data.focus_pos.x) / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET)
+    let screen_y = (body.position.y - planet_data.focus_pos.y) / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET)
+
+    if (body.graphic != undefined) {
+        let width = round(body.draw_radius * 2 / planet_data.MANUAL_SCALE_OFFSET);
+        let height = round(body.draw_radius * 2 / planet_data.MANUAL_SCALE_OFFSET);
+        // let x_pos = screen_x - width/2
+        // let y_pos = screen_y - height/2
+
+        if (UTIL.processing == false && planet_data.selected_planet.name == body.name) {
+            push()
+            translate(screen_x, screen_y)
+            rotate(body.rotation)
+            image(body.graphic, screen_x, screen_y, width, height)
+            pop()
+            return
+        }
+
+        image(body.graphic, screen_x, screen_y, width, height)
+        return
+    }
 
     fill(body.color[0], body.color[1], body.color[2])
-    circle(screen_x, screen_y, body.draw_radius * 2)
+    circle(screen_x, screen_y, body.draw_radius * 2 / planet_data.MANUAL_SCALE_OFFSET)
 
     if (body.name == "Saturn" && planet_data.selected_planet.name == "Saturn") {
         draw_rings(body)
@@ -515,18 +232,21 @@ function draw_body(body) {
 function draw_rings(body) {
     push()
     noFill()
+
+    let x_pos = (-planet_data.focus_pos.x + planet_data.selected_planet.position.x) / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET)
+    let y_pos = (-planet_data.focus_pos.y + planet_data.selected_planet.position.y) / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET)
     
     strokeWeight(body.draw_radius - 1)
     stroke(150, 131, 95)
-    circle(0,0, body.draw_radius * 3.5)
+    circle(x_pos,y_pos, body.draw_radius * 3.5)
 
     strokeWeight(body.draw_radius - 7)
     stroke(189, 173, 143)
-    circle(0,0, body.draw_radius * 3.5)
+    circle(x_pos,y_pos, body.draw_radius * 3.5)
 
     strokeWeight(body.draw_radius - 10)
     stroke(179, 176, 152)
-    circle(0,0, body.draw_radius * 3.5)
+    circle(x_pos,y_pos, body.draw_radius * 3.5)
 
     pop()
 

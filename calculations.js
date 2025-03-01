@@ -13,6 +13,7 @@ function update_positions() {
     let total_deltaX = 0
     let total_deltaY = 0
 
+
     let dT = deltaTime / planet_data.UPDATE_ITERATIONS; // Calculates fractional time for subdivided updates
     for (let u = 0; u < planet_data.UPDATE_ITERATIONS; u++) {
 
@@ -32,6 +33,10 @@ function update_positions() {
     }
     planet.position.x += total_deltaX
     planet.position.y += total_deltaY
+
+    let rate = TWO_PI / planet.rotate_time
+    planet.rotation -= rate * deltaTime
+    planet.rotation %= TWO_PI
   }
 }
 

@@ -18,10 +18,15 @@ function setup() {
   init_body_facts()
 
   createCanvas(SCREEN_WIDTH, SCREEN_HEIGHT);
+  deselect_planets()
+  noSmooth()
 }
 
 function mouseClicked() {
-  if (planet_data.hovered_planet != null && planet_data.selected_planet != planet_data.hovered_planet) {
+  if (UTIL.processing)
+    return
+
+  if (planet_data.hovered_planet != null) {
     select_planet(planet_data.hovered_planet.name);
   }
   else {
@@ -29,11 +34,23 @@ function mouseClicked() {
   }
 }
 
+function keyPressed() {
+  if (key === 'w') {
+    planet_data.MANUAL_SCALE_OFFSET /= 2
+    console.log("Zoom in: ", planet_data.MANUAL_SCALE_OFFSET)
+  }
+  else if (key === 's') {
+    planet_data.MANUAL_SCALE_OFFSET *= 2
+    console.log("Zoom out: ", planet_data.MANUAL_SCALE_OFFSET)
+  }
+  planet_data.MANUAL_SCALE_OFFSET = constrain(planet_data.MANUAL_SCALE_OFFSET, 0.0625, 4)
+}
+
 function update() {
   for (let i = 0; i < planet_data.SPEED_SCALE; i++) {
     update_positions();
+    process_planet_select();
   }
-  process_planet_select();
 }
 
 function draw() {

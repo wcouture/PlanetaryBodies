@@ -7,6 +7,7 @@ const UTIL = {
     transition_time: 1000,
     previous_radius: 2,
     next_radius: 2,
+    processing: false,
 }
 
 const body_facts = {}
@@ -521,8 +522,8 @@ function display_planet_details(planet) {
     push()
     fill(255)
     let screen_pos = createVector(0,0,0)
-    screen_pos.x = (planet.position.x - planet_data.selected_planet.position.x) / planet_data.DRAW_SCALE
-    screen_pos.y = (planet.position.y - planet_data.selected_planet.position.y) / planet_data.DRAW_SCALE
+    screen_pos.x = (planet.position.x - planet_data.selected_planet.position.x) / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET)
+    screen_pos.y = (planet.position.y - planet_data.selected_planet.position.y) / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET)
     
     let text_offset = createVector(10, -5, 0)
 
@@ -532,7 +533,7 @@ function display_planet_details(planet) {
     noFill()
     strokeWeight(1)
     stroke(100)
-    circle(screen_pos.x, screen_pos.y, 10)
+    circle(screen_pos.x, screen_pos.y, planet.draw_radius * 3.5 / planet_data.MANUAL_SCALE_OFFSET)
 
     pop()
 }
@@ -559,16 +560,22 @@ function draw_hover_details() {
 function get_hovered_planet() {
     var hovered_planet = null
     let mouse_pos = createVector(mouseX - SCREEN_WIDTH / 2, mouseY - SCREEN_HEIGHT / 2, 0)
-    mouse_pos.x += planet_data.selected_planet.position.x / planet_data.DRAW_SCALE
-    mouse_pos.y += planet_data.selected_planet.position.y / planet_data.DRAW_SCALE
+    mouse_pos.x += planet_data.selected_planet.position.x / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET)
+    mouse_pos.y += planet_data.selected_planet.position.y / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET)
     
     planet_data.selected_planet.children.forEach(planet => {
-        let planet_pos = createVector(planet.position.x / planet_data.DRAW_SCALE, planet.position.y / planet_data.DRAW_SCALE)
+        let planet_pos = createVector(planet.position.x / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET), planet.position.y / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET))
 
         if (mouse_pos.dist(planet_pos) < HOVER_CUTOFF_DISTANCE) {
             hovered_planet = planet
+            return hovered_planet;
         }
     });
+
+    // let planet_pos = createVector(planet_data.selected_planet.position.x / planet_data.DRAW_SCALE, planet_data.selected_planet.position.y / planet_data.DRAW_SCALE)
+    // if (mouse_pos.dist(planet_pos) < HOVER_CUTOFF_DISTANCE) {
+    //     hovered_planet = planet_data.selected_planet
+    // }
 
     return hovered_planet;
 }
@@ -581,8 +588,10 @@ function select_planet(name) {
     let planets = planet_data.planets;
     planets.forEach(planet => {
         if (planet.name == name) {
+            UTIL.prev_planet = planet_data.selected_planet
             planet_data.selected_planet = planet
 
+            UTIL.previous_draw_scale = UTIL.next_draw_scale
             UTIL.next_draw_scale /= planet_data.selected_planet.focus_scale
             UTIL.transition_time = 0
 
@@ -596,39 +605,72 @@ function select_planet(name) {
 
 // Interpolates between previously selected planet and currently selected
 function process_planet_select() {
-    if (UTIL.transition_time < ZOOM_TIME) {
-        UTIL.transition_time += deltaTime;
+    let dt = deltaTime / planet_data.SPEED_SCALE
 
-        planet_data.DRAW_SCALE = lerp(UTIL.previous_draw_scale, UTIL.next_draw_scale, UTIL.transition_time / ZOOM_TIME)
+    for (let i = 0; i < planet_data.UPDATE_ITERATIONS; i++) {
 
-        if (UTIL.previous_draw_scale < UTIL.next_draw_scale) {
-            // Zooming out
-            UTIL.prev_planet.draw_radius = lerp (planet_data.selected_planet.zoomed_radius, planet_data.selected_planet.child_radius, UTIL.transition_time / ZOOM_TIME)
+        if (UTIL.transition_time < ZOOM_TIME) {
+            UTIL.processing = true
+            UTIL.transition_time += dt / planet_data.UPDATE_ITERATIONS;
+    
+            planet_data.DRAW_SCALE = lerp(UTIL.previous_draw_scale, UTIL.next_draw_scale, UTIL.transition_time / ZOOM_TIME)
+    
+            if (UTIL.previous_draw_scale < UTIL.next_draw_scale) {
+                // Zooming out
+                UTIL.prev_planet.draw_radius = lerp (UTIL.prev_planet.zoomed_radius, planet_data.selected_planet.child_radius, UTIL.transition_time / ZOOM_TIME)
+
+                UTIL.prev_planet.children.forEach((child) => {
+                    child.draw_radius = lerp(planet_data.selected_planet.child_radius, 1, UTIL.transition_time / ZOOM_TIME)
+                })
+    
+                planet_data.focus_pos.x = lerp (UTIL.prev_planet.position.x, planet_data.selected_planet.position.x, UTIL.transition_time / ZOOM_TIME)
+                planet_data.focus_pos.y = lerp (UTIL.prev_planet.position.y, planet_data.selected_planet.position.y, UTIL.transition_time / ZOOM_TIME)
+            }
+            else {
+                // Zooming in
+                planet_data.selected_planet.draw_radius = lerp (planet_data.selected_planet.parents[0].child_radius, planet_data.selected_planet.zoomed_radius, UTIL.transition_time / ZOOM_TIME)
+
+                planet_data.selected_planet.children.forEach((child) => {
+                    child.draw_radius = lerp(1, planet_data.selected_planet.child_radius, UTIL.transition_time / ZOOM_TIME)
+                })
+
+                planet_data.focus_pos.x = lerp (UTIL.prev_planet.position.x, planet_data.selected_planet.position.x, UTIL.transition_time / ZOOM_TIME)
+                planet_data.focus_pos.y = lerp (UTIL.prev_planet.position.y, planet_data.selected_planet.position.y, UTIL.transition_time / ZOOM_TIME)
+            }
+    
+        } else if (UTIL.previous_draw_scale != UTIL.next_draw_scale){
+            planet_data.DRAW_SCALE = UTIL.next_draw_scale
+            UTIL.previous_draw_scale = UTIL.next_draw_scale
+
+            UTIL.processing = false
+
+            if (planet_data.selected_planet.name == "Sun"){
+                planet_data.DRAW_SCALE = planet_data.sun.focus_scale
+            }
         }
         else {
-            // Zooming in
-            planet_data.selected_planet.draw_radius = lerp (planet_data.selected_planet.child_radius, planet_data.selected_planet.zoomed_radius, UTIL.transition_time / ZOOM_TIME)
+            planet_data.focus_pos.x = planet_data.selected_planet.position.x
+            planet_data.focus_pos.y = planet_data.selected_planet.position.y
         }
-
-    } else if (UTIL.previous_draw_scale != UTIL.next_draw_scale){
-        planet_data.DRAW_SCALE = UTIL.next_draw_scale
-        UTIL.previous_draw_scale = UTIL.next_draw_scale
     }
-
 }
 
 // Resets selected planet to the sun
 function deselect_planets() {
-    if (planet_data.selected_planet.name == "Sun")
+    if (planet_data.selected_planet.name == "Sun"){
+        planet_data.DRAW_SCALE = planet_data.sun.focus_scale
         return;
+    }
     
     UTIL.prev_centerx = planet_data.selected_planet.position.x
     UTIL.prev_centery = planet_data.selected_planet.position.y
 
+    UTIL.previous_draw_scale = planet_data.DRAW_SCALE
     UTIL.next_draw_scale *= planet_data.selected_planet.focus_scale
     UTIL.transition_time = 0
 
     UTIL.prev_planet = planet_data.selected_planet
+
     
     planet_data.SPEED_SCALE *= 100
     planet_data.UPDATE_ITERATIONS /= 50
