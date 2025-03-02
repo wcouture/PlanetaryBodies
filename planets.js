@@ -109,7 +109,7 @@ function init_planets() {
     create_planet("Mercury", 55200000000, 47360, 330100000000000000000000, 10, 2, 1000, mercury_color, 86400)
 
     let venus_color = [191, 179, 145]
-    create_planet("Venus", 108200000000, 35020, 4867300000000000000000000, 10, 2, 1000, venus_color, 86400)
+    create_planet("Venus", 108200000000, 35020, 4867300000000000000000000, 10, 2, 1000, venus_color, -10088064)
 
     // Earth system ----------------------------------------------------------------
     let earth_color = [101, 144, 252]
