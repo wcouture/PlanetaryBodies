@@ -8,11 +8,11 @@ In SolarSim, explore our solar system and many of the planets' major moons; all 
 
 
 <table>
-    <tr>
-        <td width="200px">
+    <tr style="border-width: 0">
+        <td width="200px" style="border-width: 0">
             <img src="assets/solarsim.png" style="width: 200px; border-radius: 200px;"> 
         </td>
-        <td>
+        <td style="border-width: 0">
 <h3>System View:</h3>
 <ul>
     <li>When loading the webapp, you begin by viewing a zoomed out view of the entire solar system. From here you can see the orbits of all the planets within our solar system with their orbital distances to scale.</li>
