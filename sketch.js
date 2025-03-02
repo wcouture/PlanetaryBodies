@@ -70,6 +70,6 @@ function draw() {
   draw_planets();
   draw_hover_details();
   draw_focus_details();
-  //draw_zoom_info_label();
+  draw_zoom_info_label();
   // display_fps()
 }
