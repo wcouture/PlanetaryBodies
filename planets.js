@@ -13,7 +13,8 @@ function init_sun() {
         graphic: loadImage("assets/sun-graphic.png"),
         rotation: 0,
         rotate_time: 100000,
-        children: []
+        children: [],
+        path_dots: []
     }
     planet_data.sun = sun;
     planet_data.selected_planet = sun;
@@ -42,6 +43,7 @@ function create_planet(name, orbit_radius, velocity, mass, zoomed_radius, child_
 
     let planet = {
         name: name,
+        orbit_radius: orbit_radius,
         position: init_pos,
         velocity: init_vel,
         accel: createVector(0,0,0),
@@ -57,7 +59,8 @@ function create_planet(name, orbit_radius, velocity, mass, zoomed_radius, child_
         rotation: 0,
         rotate_time: rotate_time,
         parents: [planet_data.sun],
-        children: []
+        children: [],
+        path_dots: [{x: init_pos.x, y: init_pos.y}]
     }
     add_planet(planet)
     planet_data.sun.children.push(planet)
@@ -74,6 +77,7 @@ function create_moon(parent, name, orbit_radius, velocity, mass, zoomed_radius, 
 
     let planet = {
         name: name,
+        orbit_radius: orbit_radius,
         position: init_pos,
         velocity: init_vel,
         accel: createVector(0,0,0),
@@ -89,7 +93,8 @@ function create_moon(parent, name, orbit_radius, velocity, mass, zoomed_radius, 
         rotation: 0,
         rotate_time: rotate_time,
         parents: [parent, planet_data.sun],
-        children: []
+        children: [],
+        path_dots: [{x: init_pos.x, y: init_pos.y}]
     }
     add_planet(planet)
     parent.children.push(planet)
@@ -198,15 +203,53 @@ function add_planet(planet) {
     planet_data.planets.push(planet)
 }
 
+function draw_dot(dots, index, max, moon = false) {
+    if (max == 0)
+        return 
+
+
+    if (index < max) {
+        draw_dot(dots, index + 1, max, moon)
+    }
+
+    let dot = dots[index]
+    
+    
+}
+
 function draw_body(body) {
     let screen_x = (body.position.x - planet_data.focus_pos.x) / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET)
     let screen_y = (body.position.y - planet_data.focus_pos.y) / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET)
 
+    if (planet_data.selected_planet.children.includes(body)){
+        push()
+        beginShape()
+
+        curveVertex(screen_x, screen_y)
+        let is_moon = body.parents[0] != planet_data.sun;
+        body.path_dots.forEach((dot) => {
+            var pos_x = (dot.x - planet_data.focus_pos.x) / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET)
+            var pos_y = (dot.y - planet_data.focus_pos.y) / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET)
+
+            if (is_moon) {
+                pos_x = (dot.x + planet_data.selected_planet.position.x - planet_data.focus_pos.x) / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET)
+                pos_y = (dot.y + planet_data.selected_planet.position.y - planet_data.focus_pos.y) / (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET)
+            }
+            stroke(40)
+            strokeWeight(1)
+            noFill()
+            curveVertex(pos_x, pos_y)
+        })
+
+        endShape()
+
+        pop()
+    }
+    
+    imageMode(CENTER)
     if (body.graphic != undefined) {
-        let width = round(body.draw_radius * 2 / planet_data.MANUAL_SCALE_OFFSET);
-        let height = round(body.draw_radius * 2 / planet_data.MANUAL_SCALE_OFFSET);
-        // let x_pos = screen_x - width/2
-        // let y_pos = screen_y - height/2
+        let width = body.draw_radius * 2 / planet_data.MANUAL_SCALE_OFFSET;
+        let height = body.draw_radius * 2 / planet_data.MANUAL_SCALE_OFFSET;
 
         if (UTIL.processing == false && planet_data.selected_planet.name == body.name) {
             push()
@@ -223,10 +266,6 @@ function draw_body(body) {
 
     fill(body.color[0], body.color[1], body.color[2])
     circle(screen_x, screen_y, body.draw_radius * 2 / planet_data.MANUAL_SCALE_OFFSET)
-
-    if (body.name == "Saturn" && planet_data.selected_planet.name == "Saturn") {
-        draw_rings(body)
-    }
 }
 
 function draw_rings(body) {
@@ -238,15 +277,15 @@ function draw_rings(body) {
     
     strokeWeight(body.draw_radius - 1)
     stroke(150, 131, 95)
-    circle(x_pos,y_pos, body.draw_radius * 3.5)
+    circle(x_pos,y_pos, body.draw_radius * 3.5 / (planet_data.MANUAL_SCALE_OFFSET / planet_data.DRAW_SCALE))
 
     strokeWeight(body.draw_radius - 7)
     stroke(189, 173, 143)
-    circle(x_pos,y_pos, body.draw_radius * 3.5)
+    circle(x_pos,y_pos, body.draw_radius * 3.5 / (planet_data.MANUAL_SCALE_OFFSET / planet_data.DRAW_SCALE))
 
     strokeWeight(body.draw_radius - 10)
     stroke(179, 176, 152)
-    circle(x_pos,y_pos, body.draw_radius * 3.5)
+    circle(x_pos,y_pos, body.draw_radius * 3.5 / (planet_data.MANUAL_SCALE_OFFSET / planet_data.DRAW_SCALE))
 
     pop()
 
@@ -264,8 +303,8 @@ function draw_planets() {
 
 function draw_planet(planet) {
     let children = planet.children
-    children.forEach(child => {
-        draw_planet(child)
+        children.forEach(child => {
+            draw_planet(child)
     });
     draw_body(planet)
 }

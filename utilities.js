@@ -409,7 +409,7 @@ function draw_background() {
         }
 
         push()
-        fill(255, 255, 255, random(10, 100))
+        fill(255, 255, 255, random(5, 60))
         circle(position.x, position.y, 2)
         pop()
     }
@@ -538,6 +538,21 @@ function display_planet_details(planet) {
     pop()
 }
 
+function draw_zoom_info_label() {
+    push()
+    fill(155)
+    textAlign(CENTER)
+
+    let base_x = 0;
+    let base_y = 0
+    
+    let text_offset = createVector(10, SCREEN_HEIGHT / 2 - 20, 0)
+
+    textSize(12)
+    text("Use UP and DOWN arrows, or W and S keys, to zoom IN and OUT.", base_x + text_offset.x, base_y + text_offset.y)
+    pop()
+}
+
 // If hovering over a planet, display planet details
 function draw_hover_details() {
     // if (planet_data.selected_planet.name != "Sun") {
@@ -595,7 +610,11 @@ function select_planet(name) {
             UTIL.next_draw_scale /= planet_data.selected_planet.focus_scale
             UTIL.transition_time = 0
 
-            planet_data.SPEED_SCALE /= 100
+            PATH_SETTINGS.DOT_FREQUENCY /= 200
+
+            clear_path_dots()
+
+            planet_data.SPEED_SCALE /= 50
             planet_data.UPDATE_ITERATIONS *= 50
             
             return
@@ -671,9 +690,19 @@ function deselect_planets() {
 
     UTIL.prev_planet = planet_data.selected_planet
 
+    PATH_SETTINGS.DOT_FREQUENCY *= 200
+
+    clear_path_dots()
     
-    planet_data.SPEED_SCALE *= 100
+    planet_data.SPEED_SCALE *= 50
     planet_data.UPDATE_ITERATIONS /= 50
 
     planet_data.selected_planet = planet_data.selected_planet.parents[0]
+}
+
+function clear_path_dots() {
+    let planets = planet_data.planets
+    planets.forEach((body) => {
+        body.path_dots = []
+    })
 }

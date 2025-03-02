@@ -1,5 +1,11 @@
 const UNIVERSE_SCALE = 10;
 const G = 0.000000000066743;
+var update_counter = 0
+
+const PATH_SETTINGS = {
+  DOT_FREQUENCY: 10000,
+  DOT_LENGTH: 100
+}
 
 // Calculates accelerations, applies acceleration to velocity, applies velocity to position
 function update_positions() {
@@ -7,6 +13,24 @@ function update_positions() {
 
   for (let i = 0; i < planets.length; i++) {
     let planet = planets[i]
+
+    if (update_counter >= PATH_SETTINGS.DOT_FREQUENCY && planet_data.selected_planet.children.includes(planet)){
+      let dot_pos = {x: planet.position.x, y: planet.position.y}
+
+      if (planet.parents[0] != planet_data.sun) {
+        dot_pos.x = planet.position.x - planet.parents[0].position.x
+        dot_pos.y = planet.position.y - planet.parents[0].position.y
+      }
+
+      planet.path_dots.unshift(dot_pos)
+      
+      if (planet.path_dots.length > PATH_SETTINGS.DOT_LENGTH * 2 ** (planet.orbit_radius / (10**10))) {
+        planet.path_dots.pop()
+      }
+    }
+    
+
+
     planet.accel.x = 0
     planet.accel.y = 0
 
@@ -37,6 +61,10 @@ function update_positions() {
     let rate = TWO_PI / planet.rotate_time
     planet.rotation -= rate * deltaTime
     planet.rotation %= TWO_PI
+  }
+  update_counter += 1
+  if (update_counter > PATH_SETTINGS.DOT_FREQUENCY) {
+    update_counter = 0
   }
 }
 

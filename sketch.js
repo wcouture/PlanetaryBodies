@@ -35,15 +35,22 @@ function mouseClicked() {
 }
 
 function keyPressed() {
-  if (key === 'w') {
+  console.log("Curr Offset: ", planet_data.MANUAL_SCALE_OFFSET)
+
+  if (keyCode === UP_ARROW || key == 'w') {
+    if (planet_data.MANUAL_SCALE_OFFSET <= 0.0625) {
+      return
+    }
     planet_data.MANUAL_SCALE_OFFSET /= 2
-    console.log("Zoom in: ", planet_data.MANUAL_SCALE_OFFSET)
   }
-  else if (key === 's') {
+  else if (keyCode === DOWN_ARROW || key == 's') {
+    if (planet_data.MANUAL_SCALE_OFFSET >= 4) {
+      return
+    }
     planet_data.MANUAL_SCALE_OFFSET *= 2
-    console.log("Zoom out: ", planet_data.MANUAL_SCALE_OFFSET)
   }
-  planet_data.MANUAL_SCALE_OFFSET = constrain(planet_data.MANUAL_SCALE_OFFSET, 0.0625, 4)
+
+  console.log("Now Offset: ", planet_data.MANUAL_SCALE_OFFSET)
 }
 
 function update() {
@@ -63,5 +70,6 @@ function draw() {
   draw_planets();
   draw_hover_details();
   draw_focus_details();
+  //draw_zoom_info_label();
   // display_fps()
 }
