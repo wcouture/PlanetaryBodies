@@ -133,16 +133,16 @@ function init_planets() {
     let jupiter = create_planet("Jupiter", 775000000000, 13060, 1898130000000000000000000000, 15, 2, 2000, jupiter_color, 35733)
 
     let ganymede_color = [191, 182, 157]
-    create_moon(jupiter, "Ganymede", 1070400000, 10880, 148190000000000000000000, 10, 2, 1000, ganymede_color, 0)
+    create_moon(jupiter, "Ganymede", 1070400000, 10880, 148190000000000000000000, 10, 2, 1000, ganymede_color, 618153.38)
 
     let callisto_color = [142, 146, 158]
-    create_moon(jupiter, "Callisto", 1882700000, 8204, 107593800000000000000000, 10, 2, 1000, callisto_color, 0)
+    create_moon(jupiter, "Callisto", 1882700000, 8204, 107593800000000000000000, 10, 2, 1000, callisto_color, 1441931.19)
     
     let io_color = [252, 238, 179]
-    create_moon(jupiter, "Io", 421700000, 17334, 89319380000000000000000, 10, 2, 1000, io_color, 0)
+    create_moon(jupiter, "Io", 421700000, 17334, 89319380000000000000000, 10, 2, 1000, io_color, 152853.51)
     
     let europa_color = [219, 247, 255]
-    create_moon(jupiter, "Europa", 670900000, 13743, 47998400000000000000000, 10, 2, 1000, europa_color, 0)
+    create_moon(jupiter, "Europa", 670900000, 13743, 47998400000000000000000, 10, 2, 1000, europa_color, 306822.04)
 
     // Saturnian system ----------------------------------------------------------------
     let saturn_color = [255, 228, 207]
