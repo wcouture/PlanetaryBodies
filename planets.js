@@ -106,7 +106,7 @@ function init_planets() {
     planet_data.planets = []
 
     let mercury_color = [156, 156, 156]
-    create_planet("Mercury", 55200000000, 47360, 330100000000000000000000, 10, 2, 1000, mercury_color, 86400)
+    create_planet("Mercury", 55200000000, 47360, 330100000000000000000000, 10, 2, 1000, mercury_color, 15206400)
 
     let venus_color = [191, 179, 145]
     create_planet("Venus", 108200000000, 35020, 4867300000000000000000000, 10, 2, 1000, venus_color, -10088064)
@@ -130,13 +130,13 @@ function init_planets() {
 
     // Jovian system ----------------------------------------------------------------
     let jupiter_color = [242, 189, 148]
-    let jupiter = create_planet("Jupiter", 775000000000, 13060, 1898130000000000000000000000, 15, 2, 2000, jupiter_color, 0)
+    let jupiter = create_planet("Jupiter", 775000000000, 13060, 1898130000000000000000000000, 15, 2, 2000, jupiter_color, 35733)
 
     let ganymede_color = [191, 182, 157]
     create_moon(jupiter, "Ganymede", 1070400000, 10880, 148190000000000000000000, 10, 2, 1000, ganymede_color, 0)
 
     let callisto_color = [142, 146, 158]
-    create_moon(jupiter, "Ganymede", 1882700000, 8204, 107593800000000000000000, 10, 2, 1000, callisto_color, 0)
+    create_moon(jupiter, "Callisto", 1882700000, 8204, 107593800000000000000000, 10, 2, 1000, callisto_color, 0)
     
     let io_color = [252, 238, 179]
     create_moon(jupiter, "Io", 421700000, 17334, 89319380000000000000000, 10, 2, 1000, io_color, 0)
