@@ -1,5 +1,6 @@
 const SCREEN_WIDTH = innerWidth;
 const SCREEN_HEIGHT = innerHeight;
+const MANUAL_SCALE_FACTOR = 1.25
 
 let APP_FONT;
 
@@ -41,13 +42,13 @@ function keyPressed() {
     if (planet_data.MANUAL_SCALE_OFFSET <= 0.0625) {
       return
     }
-    planet_data.MANUAL_SCALE_OFFSET /= 2
+    planet_data.MANUAL_SCALE_OFFSET /= MANUAL_SCALE_FACTOR
   }
   else if (keyCode === DOWN_ARROW || key == 's') {
     if (planet_data.MANUAL_SCALE_OFFSET >= 4) {
       return
     }
-    planet_data.MANUAL_SCALE_OFFSET *= 2
+    planet_data.MANUAL_SCALE_OFFSET *= MANUAL_SCALE_FACTOR
   }
 
   console.log("Now Offset: ", planet_data.MANUAL_SCALE_OFFSET)
