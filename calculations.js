@@ -3,7 +3,7 @@ const G = 0.000000000066743;
 var update_counter = 0
 
 const PATH_SETTINGS = {
-  DOT_FREQUENCY: 10000,
+  DOT_FREQUENCY: 5000,
   DOT_LENGTH: 100
 }
 
