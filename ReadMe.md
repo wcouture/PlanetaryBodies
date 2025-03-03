@@ -9,28 +9,46 @@ In SolarSim, explore our solar system and many of the planets' major moons; all 
 
 <table>
     <tr style="border-width: 0">
-        <td width="200px" style="border-width: 0">
-            <img src="assets/solarsim.png" style="width: 200px; border-radius: 200px;"> 
+        <td width="25%" style="border-width: 0">
+            <img src="assets/solarsim2.png" style="width: 200px; border-radius: 200px;"> 
         </td>
-        <td style="border-width: 0">
-<h3>System View:</h3>
-<ul>
-    <li>When loading the webapp, you begin by viewing a zoomed out view of the entire solar system. From here you can see the orbits of all the planets within our solar system with their orbital distances to scale.</li>
-    <li>Various statistics and details about the sun and our solar system are displayed to the right.</li>
-</ul>
+        <td width="75%" style="border-width: 0">
+            <h3>System View:</h3>
+            <ul>
+                <li>When loading the webapp, you begin by viewing a zoomed out view of the entire solar system. From here you can see the orbits of all the planets within our solar system with their orbital distances to scale.</li>
+                <li>Various statistics and details about the sun and our solar system are displayed to the right.</li>
+            </ul>
         </td>
     </tr>
-    
 </table>
-
-### Planet Zoomed View:
-* Selecting a planet, either by clicking it directly or using the list on the right, will zoom further into its orbit showing its major moons as well.
-* Various statistics and details about the selected plant and its orbit are dsiplayed to the right.
-
-### Moon Zoomed View:
-* Within the planet view, you can further select and zoom into major moons.
-* Various statistics and details about the selected moon and its orbit are displayed to the right.
-
+<table>
+    <tr>
+        <td width="75%" style="border-width: 0">
+            <h3>Planet Zoomed View:</h3>
+            <ul>
+                <li>Selecting a planet, either by clicking it directly or using the list on the right, will zoom further into its orbit showing its major moons as well.</li>
+                <li>Various statistics and details about the selected plant and its orbit are dsiplayed to the right.</li>
+            </ul>
+        </td>
+        <td width="25%" style="border-width: 0">
+            <img src="assets/planetView.png" style="width: 200px; border-radius: 200px;"> 
+        </td>
+    </tr>
+</table>
+<table>
+    <tr style="border-width: 0">
+        <td width="25%" style="border-width: 0">
+            <img src="assets/moonView.png" style="width: 200px; border-radius: 200px;"> 
+        </td>
+        <td width="75%" style="border-width: 0">
+            <h3>Moon Zoomed View:</h3>
+            <ul>
+                <li>Within the planet view, you can further select and zoom into major moons.</li>
+                <li>Various statistics and details about the selected moon and its orbit are displayed to the right.</li>
+            </ul>
+        </td>
+    </tr>
+</table>
 
 ## Installation
 
