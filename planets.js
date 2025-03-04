@@ -40,6 +40,7 @@ function create_planet(name, orbit_radius, velocity, mass, zoomed_radius, child_
     let init_vel = createVector(cos(angle - HALF_PI) * velocity / (UNIVERSE_SCALE / 3), sin(angle - HALF_PI) * velocity / (UNIVERSE_SCALE / 3))
 
     let graphic_path = "assets/" + name.toLowerCase() + "-graphic.png"
+    let shadow_path = "assets/" + name.toLowerCase() + "-shadow.png"
 
     let planet = {
         name: name,
@@ -55,6 +56,9 @@ function create_planet(name, orbit_radius, velocity, mass, zoomed_radius, child_
         color: color,
         graphic: loadImage(graphic_path, (img) => {}, (event)=> {
             planet.graphic = undefined
+        }),
+        shadow: loadImage(shadow_path, (img) => {}, (event) => {
+            planet.shadow = undefined
         }),
         rotation: 0,
         rotate_time: rotate_time,
@@ -74,6 +78,7 @@ function create_moon(parent, name, orbit_radius, velocity, mass, zoomed_radius, 
     let init_vel = createVector((cos(angle - HALF_PI) * velocity / (UNIVERSE_SCALE / 3)) + parent.velocity.x, (sin(angle - HALF_PI) * velocity / (UNIVERSE_SCALE / 3)) + parent.velocity.y)
 
     let graphic_path = "assets/" + name.toLowerCase() + "-graphic.png"
+    let shadow_path = "assets/" + name.toLowerCase() + "-shadow.png"
 
     let planet = {
         name: name,
@@ -89,6 +94,9 @@ function create_moon(parent, name, orbit_radius, velocity, mass, zoomed_radius, 
         color: color,
         graphic: loadImage(graphic_path, (img) => {}, (event)=> {
             planet.graphic = undefined
+        }),
+        shadow: loadImage(shadow_path, (img) => {}, (event) => {
+            planet.shadow = undefined
         }),
         rotation: 0,
         rotate_time: rotate_time,
@@ -246,21 +254,75 @@ function draw_body(body) {
         pop()
     }
     
-    imageMode(CENTER)
     if (body.graphic != undefined) {
         let width = body.draw_radius * 2 / planet_data.MANUAL_SCALE_OFFSET;
         let height = body.draw_radius * 2 / planet_data.MANUAL_SCALE_OFFSET;
 
-        if (UTIL.processing == false && planet_data.selected_planet.name == body.name) {
-            push()
-            translate(screen_x, screen_y)
-            rotate(body.rotation)
-            image(body.graphic, screen_x, screen_y, width, height)
-            pop()
-            return
+        let img = createImage(body.graphic.width, body.graphic.height)
+        img.copy(body.graphic, 0, 0, body.graphic.width, body.graphic.height, 0, 0, body.graphic.width, body.graphic.height)
+
+        // This needs to be reimplemented as a shader on the gpu
+        // img.loadPixels()
+
+
+
+        // let sun_vec = createVector(planet_data.sun.position.x - body.position.x, planet_data.sun.position.y - body.position.y)
+        // sun_vec.normalize()
+
+        // let far_side = sun_vec.copy()
+        // let close_side = sun_vec.copy()
+        // far_side.mult(-body.graphic.width) // Far side of planet from sun
+        // close_side.mult(body.graphic.width)
+
+
+        // for (let x = 0; x < img.width; x++) {
+        //     for (let y = 0; y < img.height; y++) {
+        //         let curr_color = img.get(x, y)
+        //         if (curr_color.a == 0) {
+        //             continue
+        //         }
+
+        //         let pixel = createVector(x, y)
+
+        //         let close_dist = pixel.dist(far_side)
+        //         let far_dist = pixel.dist(close_side)
+
+        //         let a
+        //         if (close_dist < far_dist) {
+        //             a = 0
+        //         }
+        //         else {
+        //             a = 80
+        //         }
+
+        //         let c = [0, 0, 0, a]
+        //         let output = color(c[0] + curr_color[0], c[1] + curr_color[1], c[2] + curr_color[2], c[3] + curr_color[3])
+
+        //         img.set(x, y, output)
+        //     }
+        // }
+
+        // img.updatePixels()
+
+        push()
+
+        translate(screen_x, screen_y)
+        rotate(body.rotation)
+        imageMode(CENTER)
+        image(img, 0, 0, width, height)
+
+        if (body.shadow != undefined) {
+            let sun_vec = createVector(planet_data.sun.position.x - body.position.x, planet_data.sun.position.y - body.position.y)
+            sun_vec.normalize()
+            let angle = atan2(-sun_vec.y, sun_vec.x)
+
+            rotate(-body.rotation)
+            rotate(-angle)
+
+            image(body.shadow, 0, 0, width, height)
         }
 
-        image(body.graphic, screen_x, screen_y, width, height)
+        pop()
         return
     }
 
@@ -303,7 +365,7 @@ function draw_planets() {
 
 function draw_planet(planet) {
     let children = planet.children
-        children.forEach(child => {
+    children.forEach(child => {
             draw_planet(child)
     });
     draw_body(planet)
