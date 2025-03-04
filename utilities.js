@@ -613,8 +613,10 @@ function select_planet(name) {
             PATH_SETTINGS.DOT_FREQUENCY /= 200
 
             clear_path_dots()
-
+            
             planet_data.SPEED_SCALE /= 50
+            UTIL.next_speed_scale = planet_data.SPEED_SCALE
+            
             planet_data.UPDATE_ITERATIONS *= 50
             
             return
@@ -656,9 +658,11 @@ function process_planet_select() {
                 planet_data.focus_pos.x = lerp (UTIL.prev_planet.position.x, planet_data.selected_planet.position.x, UTIL.transition_time / ZOOM_TIME)
                 planet_data.focus_pos.y = lerp (UTIL.prev_planet.position.y, planet_data.selected_planet.position.y, UTIL.transition_time / ZOOM_TIME)
             }
+
     
         } else if (UTIL.previous_draw_scale != UTIL.next_draw_scale){
             planet_data.DRAW_SCALE = UTIL.next_draw_scale
+            planet_data.SPEED_SCALE = UTIL.next_speed_scale
             UTIL.previous_draw_scale = UTIL.next_draw_scale
 
             UTIL.processing = false
@@ -694,7 +698,8 @@ function deselect_planets() {
 
     clear_path_dots()
     
-    planet_data.SPEED_SCALE *= 50
+    UTIL.next_speed_scale = planet_data.SPEED_SCALE * 50
+
     planet_data.UPDATE_ITERATIONS /= 50
 
     planet_data.selected_planet = planet_data.selected_planet.parents[0]
