@@ -116,21 +116,21 @@ function init_planets() {
     planet_data.planets = []
 
     let mercury_color = [156, 156, 156]
-    create_planet("Mercury", 55200000000, 47360, 330100000000000000000000, 10, 2, 1000, mercury_color, 15206400)
+    create_planet("Mercury", 55200000000, 47360, 330100000000000000000000, 10, 2, 1000, mercury_color, 5067014.4)
 
     let venus_color = [191, 179, 145]
-    create_planet("Venus", 108200000000, 35020, 4867300000000000000000000, 10, 2, 1000, venus_color, -10088064)
+    create_planet("Venus", 108200000000, 35020, 4867300000000000000000000, 10, 2, 1000, venus_color, -20997152.64)
 
     // Earth system ----------------------------------------------------------------
     let earth_color = [101, 144, 252]
-    let earth = create_planet("Earth", 149000000000, 29780, 5972200000000000000000000, 14, 5, 8000, earth_color, 86400)
+    let earth = create_planet("Earth", 149000000000, 29780, 5972200000000000000000000, 14, 5, 8000, earth_color, 86164.1)
     
     let moon_color = [100, 100, 100]
-    create_moon(earth, "Moon", 384400000, 1082, 73646000000000000000000, 22, 2, 100, moon_color, 2378642.9)
+    create_moon(earth, "Moon", 384400000, 1082, 73646000000000000000000, 22, 2, 100, moon_color, 2360591.5)
 
     // Martian system ----------------------------------------------------------------
     let mars_color = [161, 91, 67]
-    let mars = create_planet("Mars", 225000000000, 24080, 639000000000000000000000, 20, 2, 100000, mars_color, 88656)
+    let mars = create_planet("Mars", 225000000000, 24080, 639000000000000000000000, 20, 2, 100000, mars_color, 88642.7)
 
     let phobos_color = [100, 100, 100]
     create_moon(mars, "Phobos", 9376000, 2138, 10600000000000000, 15, 2, 1000, phobos_color, 27552)
@@ -140,7 +140,7 @@ function init_planets() {
 
     // Jovian system ----------------------------------------------------------------
     let jupiter_color = [242, 189, 148]
-    let jupiter = create_planet("Jupiter", 775000000000, 13060, 1898130000000000000000000000, 25, 2, 3000, jupiter_color, 35733)
+    let jupiter = create_planet("Jupiter", 775000000000, 13060, 1898130000000000000000000000, 25, 2, 3000, jupiter_color, 3573)
 
     let ganymede_color = [191, 182, 157]
     create_moon(jupiter, "Ganymede", 1070400000, 10880, 148190000000000000000000, 10, 2, 1000, ganymede_color, 618153.38)
@@ -156,7 +156,7 @@ function init_planets() {
 
     // Saturnian system ----------------------------------------------------------------
     let saturn_color = [255, 228, 207]
-    let saturn = create_planet("Saturn", 1420000000000, 9670, 568320000000000000000000000, 15, 2, 8000, saturn_color, 0)
+    let saturn = create_planet("Saturn", 1420000000000, 9670, 568320000000000000000000000, 15, 2, 8000, saturn_color, 38018)
     
     let titan_color = [141, 134, 145]
     create_moon(saturn, "Titan", 1221870000, 5570, 134518000000000000000000, 10, 2, 100, titan_color, 0)
@@ -200,7 +200,7 @@ function init_planets() {
 
     // Neptunian system ----------------------------------------------------------------
     let neptune_color = [66, 116, 201]
-    let neptune = create_planet("Neptune", 4510000000000, 5450, 102409000000000000000000000, 10, 2, 3000, neptune_color, 0)
+    let neptune = create_planet("Neptune", 4510000000000, 5450, 102409000000000000000000000, 10, 2, 3000, neptune_color, 57996)
 
     let triton_color = [125,120,150]
     create_moon(neptune, "Triton", 354759000, 4390, 21389000000000000000000, 10, 2, 1000, triton_color, 0)
@@ -323,10 +323,9 @@ function draw_body(body) {
 
             image(body.shadow, 0, 0, width * 1.1 , height * 1.1 )
 
-            if (body.name == "Saturn") {
+            if (body.name == "Saturn" && planet_data.draw_rings) {
                 let graphic = planet_data.rings_graphic
                 image(graphic, 0, 0, width * 3, height * 3)
-    
             }
         }
 
