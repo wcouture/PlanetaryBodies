@@ -110,6 +110,8 @@ function create_moon(parent, name, orbit_radius, velocity, mass, zoomed_radius, 
 
 function init_planets() {
     init_scalars();
+    planet_data.rings_graphic = loadImage("assets/saturn-rings.png")
+    planet_data.draw_rings = false
 
     planet_data.planets = []
 
@@ -138,7 +140,7 @@ function init_planets() {
 
     // Jovian system ----------------------------------------------------------------
     let jupiter_color = [242, 189, 148]
-    let jupiter = create_planet("Jupiter", 775000000000, 13060, 1898130000000000000000000000, 15, 2, 2000, jupiter_color, 35733)
+    let jupiter = create_planet("Jupiter", 775000000000, 13060, 1898130000000000000000000000, 35, 2, 4000, jupiter_color, 35733)
 
     let ganymede_color = [191, 182, 157]
     create_moon(jupiter, "Ganymede", 1070400000, 10880, 148190000000000000000000, 10, 2, 1000, ganymede_color, 618153.38)
@@ -154,7 +156,7 @@ function init_planets() {
 
     // Saturnian system ----------------------------------------------------------------
     let saturn_color = [255, 228, 207]
-    let saturn = create_planet("Saturn", 1420000000000, 9670, 568320000000000000000000000, 10, 2, 3000, saturn_color, 0)
+    let saturn = create_planet("Saturn", 1420000000000, 9670, 568320000000000000000000000, 15, 2, 8000, saturn_color, 0)
     
     let titan_color = [141, 134, 145]
     create_moon(saturn, "Titan", 1221870000, 5570, 134518000000000000000000, 10, 2, 100, titan_color, 0)
@@ -319,7 +321,13 @@ function draw_body(body) {
             rotate(-body.rotation)
             rotate(-angle)
 
-            image(body.shadow, 0, 0, width, height)
+            image(body.shadow, 0, 0, width * 1.1 , height * 1.1 )
+
+            if (body.name == "Saturn") {
+                let graphic = planet_data.rings_graphic
+                image(graphic, 0, 0, width * 3, height * 3)
+    
+            }
         }
 
         pop()
@@ -328,6 +336,24 @@ function draw_body(body) {
 
     fill(body.color[0], body.color[1], body.color[2])
     circle(screen_x, screen_y, body.draw_radius * 2 / planet_data.MANUAL_SCALE_OFFSET)
+
+    let width = (body.draw_radius * 2 / planet_data.MANUAL_SCALE_OFFSET) * 1.2;
+    let height = (body.draw_radius * 2 / planet_data.MANUAL_SCALE_OFFSET) * 1.2;
+
+    let sun_vec = createVector(planet_data.sun.position.x - body.position.x, planet_data.sun.position.y - body.position.y)
+    sun_vec.normalize()
+    let angle = atan2(-sun_vec.y, sun_vec.x)
+
+    push()
+    translate(screen_x, screen_y)
+    rotate(-angle)
+    image(planet_data.planets[1].shadow, 0, 0, width, height)
+
+    if (body.name == "Saturn" && planet_data.draw_rings) {
+        let graphic = planet_data.rings_graphic
+        image(graphic, 0, 0, width * 3, height * 3)
+    }
+    pop()
 }
 
 function draw_rings(body) {

@@ -618,6 +618,8 @@ function select_planet(name) {
             UTIL.next_speed_scale = planet_data.SPEED_SCALE
             
             planet_data.UPDATE_ITERATIONS *= 50
+
+            planet_data.draw_rings = true
             
             return
         }
@@ -669,6 +671,7 @@ function process_planet_select() {
 
             if (planet_data.selected_planet.name == "Sun"){
                 planet_data.DRAW_SCALE = planet_data.sun.focus_scale
+                planet_data.draw_rings = false
             }
         }
         else {
