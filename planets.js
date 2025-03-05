@@ -10,7 +10,7 @@ function init_sun() {
         child_radius: 1,
         focus_scale: 600000000,
         color: [222, 202, 0],
-        graphic: loadImage("assets/sun-graphic.png"),
+        graphic: loadImage("assets/planet_graphics/sun-graphic.png"),
         rotation: 0,
         rotate_time: 100000,
         children: [],
@@ -39,8 +39,8 @@ function create_planet(name, orbit_radius, velocity, mass, zoomed_radius, child_
     let init_pos = createVector(cos(angle) * orbit_radius / UNIVERSE_SCALE, sin(angle) * orbit_radius / UNIVERSE_SCALE)
     let init_vel = createVector(cos(angle - HALF_PI) * velocity / (UNIVERSE_SCALE / 3), sin(angle - HALF_PI) * velocity / (UNIVERSE_SCALE / 3))
 
-    let graphic_path = "assets/" + name.toLowerCase() + "-graphic.png"
-    let shadow_path = "assets/" + name.toLowerCase() + "-shadow.png"
+    let graphic_path = "assets/planet_graphics/" + name.toLowerCase() + "-graphic.png"
+    let shadow_path = "assets/planet_graphics/" + name.toLowerCase() + "-shadow.png"
 
     let planet = {
         name: name,
@@ -77,8 +77,8 @@ function create_moon(parent, name, orbit_radius, velocity, mass, zoomed_radius, 
     let init_pos = createVector((cos(angle) * orbit_radius / UNIVERSE_SCALE) + parent.position.x, (sin(angle) * orbit_radius / UNIVERSE_SCALE) + parent.position.y)
     let init_vel = createVector((cos(angle - HALF_PI) * velocity / (UNIVERSE_SCALE / 3)) + parent.velocity.x, (sin(angle - HALF_PI) * velocity / (UNIVERSE_SCALE / 3)) + parent.velocity.y)
 
-    let graphic_path = "assets/" + name.toLowerCase() + "-graphic.png"
-    let shadow_path = "assets/" + name.toLowerCase() + "-shadow.png"
+    let graphic_path = "assets/planet_graphics/" + name.toLowerCase() + "-graphic.png"
+    let shadow_path = "assets/planet_graphics/" + name.toLowerCase() + "-shadow.png"
 
     let planet = {
         name: name,
@@ -110,7 +110,7 @@ function create_moon(parent, name, orbit_radius, velocity, mass, zoomed_radius, 
 
 function init_planets() {
     init_scalars();
-    planet_data.rings_graphic = loadImage("assets/saturn-rings.png")
+    planet_data.rings_graphic = loadImage("assets/planet_graphics/saturn-rings.png")
     planet_data.draw_rings = false
 
     planet_data.planets = []

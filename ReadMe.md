@@ -1,6 +1,6 @@
 
 
-# <img src="assets/earth-png.webp" style="margin-left: auto; width: 100px; "> SolarSim
+# <img src="assets/readme-images/earth-png.webp" style="margin-left: auto; width: 100px; "> SolarSim
 
 In SolarSim, explore our solar system and many of the planets' major moons; all simulated using Netownian physics!
 
@@ -10,7 +10,7 @@ In SolarSim, explore our solar system and many of the planets' major moons; all 
 <table>
     <tr style="border-width: 0">
         <td width="25%" style="border-width: 0">
-            <img src="assets/solarsim2.png" style="width: 200px; border-radius: 200px;"> 
+            <img src="assets/readme-images/solarsim2.png" style="width: 200px; border-radius: 200px;"> 
         </td>
         <td width="75%" style="border-width: 0">
             <h3>System View:</h3>
@@ -31,14 +31,14 @@ In SolarSim, explore our solar system and many of the planets' major moons; all 
             </ul>
         </td>
         <td width="25%" style="border-width: 0">
-            <img src="assets/planetView.png" style="width: 200px; border-radius: 200px;"> 
+            <img src="assets/readme-images/planetView.png" style="width: 200px; border-radius: 200px;"> 
         </td>
     </tr>
 </table>
 <table>
     <tr style="border-width: 0">
         <td width="25%" style="border-width: 0">
-            <img src="assets/moonView.png" style="width: 200px; border-radius: 200px;"> 
+            <img src="assets/readme-images/moonView.png" style="width: 200px; border-radius: 200px;"> 
         </td>
         <td width="75%" style="border-width: 0">
             <h3>Moon Zoomed View:</h3>

@@ -7,7 +7,7 @@ let APP_FONT;
 var DRAW_SCALE = 1100000000;
 
 function preload() {
-  APP_FONT = loadFont('/assets/Mulish-Black.ttf')
+  APP_FONT = loadFont('/assets/fonts/Mulish-Black.ttf')
 }
 
 function setup() {
