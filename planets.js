@@ -187,7 +187,7 @@ function init_planets() {
     create_moon(uranus, "Titania", 435910000, 3640, 3455000000000000000000, 10, 2, 1000, titania_color, 0)
 
     let oberon_color = [206, 220, 242]
-    create_moon(uranus, "Oberon", 583520000, 3150, 3110400000000000000000, 10, 2, oberon_color, 0)
+    create_moon(uranus, "Oberon", 583520000, 3150, 3110400000000000000000, 10, 2, 1000, oberon_color, 0)
 
     let umbriel_color = [168, 168, 168]
     create_moon(uranus, "Umbriel", 266000000, 4670, 1288500000000000000000, 10, 2, 1000, umbriel_color, 0)
