@@ -123,7 +123,7 @@ function init_planets() {
 
     // Earth system ----------------------------------------------------------------
     let earth_color = [101, 144, 252]
-    let earth = create_planet("Earth", 149000000000, 29780, 5972200000000000000000000, 14, 6, 5000, earth_color, 86400)
+    let earth = create_planet("Earth", 149000000000, 29780, 5972200000000000000000000, 14, 5, 8000, earth_color, 86400)
     
     let moon_color = [100, 100, 100]
     create_moon(earth, "Moon", 384400000, 1082, 73646000000000000000000, 22, 2, 100, moon_color, 2378642.9)
@@ -140,7 +140,7 @@ function init_planets() {
 
     // Jovian system ----------------------------------------------------------------
     let jupiter_color = [242, 189, 148]
-    let jupiter = create_planet("Jupiter", 775000000000, 13060, 1898130000000000000000000000, 35, 2, 4000, jupiter_color, 35733)
+    let jupiter = create_planet("Jupiter", 775000000000, 13060, 1898130000000000000000000000, 25, 2, 3000, jupiter_color, 35733)
 
     let ganymede_color = [191, 182, 157]
     create_moon(jupiter, "Ganymede", 1070400000, 10880, 148190000000000000000000, 10, 2, 1000, ganymede_color, 618153.38)
