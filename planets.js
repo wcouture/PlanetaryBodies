@@ -159,51 +159,54 @@ function init_planets() {
     let saturn = create_planet("Saturn", 1420000000000, 9670, 568320000000000000000000000, 15, 2, 8000, saturn_color, 38018)
     
     let titan_color = [141, 134, 145]
-    create_moon(saturn, "Titan", 1221870000, 5570, 134518000000000000000000, 10, 2, 100, titan_color, 0)
+    create_moon(saturn, "Titan", 1221870000, 5570, 134518000000000000000000, 10, 2, 100, titan_color, 1377648)
 
     let rhea_color = [101, 102, 125]
-    create_moon(saturn, "Rhea", 527040000, 8480, 2306485400000000000000, 10, 2, 100, rhea_color, 0)
+    create_moon(saturn, "Rhea", 527040000, 8480, 2306485400000000000000, 10, 2, 100, rhea_color, 390373.52)
 
     let enceladus_color = [77, 67, 67]
-    create_moon(saturn, "Enceladus", 237948000, 12635, 108031800000000000000, 10, 2, 100, enceladus_color, 0)
+    create_moon(saturn, "Enceladus", 237948000, 12635, 108031800000000000000, 10, 2, 100, enceladus_color, 118386.84)
 
     let mimas_color = [138, 109, 109]
-    create_moon(saturn, "Mimas", 185539000, 12280, 37509400000000000000, 10, 2, 100, mimas_color, 0)
+    create_moon(saturn, "Mimas", 185539000, 12280, 37509400000000000000, 10, 2, 100, mimas_color, 81425.26)
 
     let tethys_color = [143, 143, 143]
-    create_moon(saturn, "Tethys", 294619000, 11350, 617490000000000000000, 10, 2, 100, tethys_color, 0)
+    create_moon(saturn, "Tethys", 294619000, 11350, 617490000000000000000, 10, 2, 100, tethys_color, 163106.09)
 
     let dione_color = [144, 173, 167]
-    create_moon(saturn, "Dione", 377396000, 10028, 1095486800000000000000, 10, 2, 1000, dione_color, 0)
+    create_moon(saturn, "Dione", 377396000, 10028, 1095486800000000000000, 10, 2, 1000, dione_color, 236469.456)
 
     let lapetus_color = [181, 155, 136]
-    create_moon(saturn, "Lapetus", 3560820000, 3265, 1805650000000000000000, 10, 2, 1000, lapetus_color, 0)
+    create_moon(saturn, "Lapetus", 3560820000, 3265, 1805650000000000000000, 10, 2, 1000, lapetus_color, 6853377.6)
 
     // Uranian system ----------------------------------------------------------------
     let uranus_color = [136, 194, 227]
     let uranus = create_planet("Uranus", 2882000000000, 6790, 86811000000000000000000000, 10, 2, 5000, uranus_color, 0)
 
     let titania_color = [141, 134, 145]
-    create_moon(uranus, "Titania", 435910000, 3640, 3455000000000000000000, 10, 2, 1000, titania_color, 0)
+    create_moon(uranus, "Titania", 435910000, 3640, 3455000000000000000000, 10, 2, 1000, titania_color, 752218.6)
 
     let oberon_color = [206, 220, 242]
-    create_moon(uranus, "Oberon", 583520000, 3150, 3110400000000000000000, 10, 2, 1000, oberon_color, 0)
+    create_moon(uranus, "Oberon", 583520000, 3150, 3110400000000000000000, 10, 2, 1000, oberon_color, 1163223.4)
 
     let umbriel_color = [168, 168, 168]
-    create_moon(uranus, "Umbriel", 266000000, 4670, 1288500000000000000000, 10, 2, 1000, umbriel_color, 0)
+    create_moon(uranus, "Umbriel", 266000000, 4670, 1288500000000000000000, 10, 2, 1000, umbriel_color, 358041.6)
 
     let ariel_color = [177, 199, 185]
-    create_moon(uranus, "Ariel", 190900000, 5510, 1233100000000000000000, 10, 2, 1000, ariel_color, 0)
+    create_moon(uranus, "Ariel", 190900000, 5510, 1233100000000000000000, 10, 2, 1000, ariel_color, 217728)
 
     let miranda_color = [168, 151, 158]
-    create_moon(uranus, "Miranda", 129390000, 6660, 62930000000000000000, 10, 2, 1000, miranda_color, 0)
+    create_moon(uranus, "Miranda", 129390000, 6660, 62930000000000000000, 10, 2, 1000, miranda_color, 122124.6)
+    
+    let puck_color = [80, 80, 80]
+    create_moon(uranus, "Puck", 86004444, 8210, 1910000000000000000, 10, 2, 1000, puck_color, 65822.35997)
 
     // Neptunian system ----------------------------------------------------------------
     let neptune_color = [66, 116, 201]
     let neptune = create_planet("Neptune", 4510000000000, 5450, 102409000000000000000000000, 10, 2, 3000, neptune_color, 57996)
 
     let triton_color = [125,120,150]
-    create_moon(neptune, "Triton", 354759000, 4390, 21389000000000000000000, 10, 2, 1000, triton_color, 0)
+    create_moon(neptune, "Triton", 354759000, 4390, 21389000000000000000000, 10, 2, 1000, triton_color, 507773)
 
     init_stars()
     imageMode(CENTER)

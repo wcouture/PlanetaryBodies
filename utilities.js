@@ -330,8 +330,8 @@ function init_body_facts() {
     body_facts["Ariel"]["Names:"] = "Ariel, Uranus I"
     body_facts["Ariel"]["Mass:"] = "1.2331 * 10^21 kg"
     body_facts["Ariel"]["Mean Radius:"] = '578.9 km'
-    body_facts["Ariel"]["Apoapsis:"] = ' km'
-    body_facts["Ariel"]["Periapsis:"] = ' km'
+    body_facts["Ariel"]["Apoapsis:"] = '191,129.36 km'
+    body_facts["Ariel"]["Periapsis:"] = '190,671.19 km'
     body_facts["Ariel"]["Semi-major Axis:"] = '190,900 km'
     body_facts["Ariel"]["Orbital Period:"] = '2d 12h 28m 48s (sidereal)'
     body_facts["Ariel"]["Mean Orbital Velocity:"] = '5.51 km/s'
@@ -341,12 +341,23 @@ function init_body_facts() {
     body_facts["Miranda"]["Names:"] = "Miranda, Uranus V"
     body_facts["Miranda"]["Mass:"] = "6.293 * 10^19 kg"
     body_facts["Miranda"]["Mean Radius:"] = '235.8 km'
-    body_facts["Miranda"]["Apoapsis:"] = ' km'
-    body_facts["Miranda"]["Periapsis:"] = ' km'
+    body_facts["Miranda"]["Apoapsis:"] = '129,571.4 km'
+    body_facts["Miranda"]["Periapsis:"] = '129,209.11 km'
     body_facts["Miranda"]["Semi-major Axis:"] = '129,390 km'
     body_facts["Miranda"]["Orbital Period:"] = '1d 9h 55m 24.6s (sidereal)'
     body_facts["Miranda"]["Mean Orbital Velocity:"] = '6.66 km/s'
     body_facts["Miranda"]["Synodic Rotation:"] = 'synchronous (tidally locked)'
+
+    body_facts["Puck"] = {}
+    body_facts["Puck"]["Names:"] = "Puck, Uranus XV"
+    body_facts["Puck"]["Mass:"] = "1.91 * 10^18 kg"
+    body_facts["Puck"]["Mean Radius:"] = '81 (+=2) km'
+    body_facts["Puck"]["Apoapsis:"] = '86,014.77 km'
+    body_facts["Puck"]["Periapsis:"] = '85,994.12 km'
+    body_facts["Puck"]["Semi-major Axis:"] = '86,004.444 km'
+    body_facts["Puck"]["Orbital Period:"] = '18h 17m 2.36s (sidereal)'
+    body_facts["Puck"]["Mean Orbital Velocity:"] = '8.21 km/s'
+    body_facts["Puck"]["Synodic Rotation:"] = 'synchronous (tidally locked)'
 
     // Neptunian Moons
     body_facts["Triton"] = {}
