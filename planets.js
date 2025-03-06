@@ -266,6 +266,7 @@ function draw_body(body) {
         let img = createImage(body.graphic.width, body.graphic.height)
         img.copy(body.graphic, 0, 0, body.graphic.width, body.graphic.height, 0, 0, body.graphic.width, body.graphic.height)
 
+        /*
         // This needs to be reimplemented as a shader on the gpu
         // img.loadPixels()
 
@@ -308,6 +309,7 @@ function draw_body(body) {
         // }
 
         // img.updatePixels()
+        */
 
         push()
 
@@ -327,6 +329,7 @@ function draw_body(body) {
             image(body.shadow, 0, 0, width * 1.1 , height * 1.1 )
 
             if (body.name == "Saturn" && planet_data.draw_rings) {
+                //smooth()
                 let graphic = planet_data.rings_graphic
                 image(graphic, 0, 0, width * 3, height * 3)
             }

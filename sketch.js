@@ -36,8 +36,6 @@ function mouseClicked() {
 }
 
 function keyPressed() {
-  console.log("Curr Offset: ", planet_data.MANUAL_SCALE_OFFSET)
-
   if (keyCode === UP_ARROW || key == 'w') {
     if (planet_data.MANUAL_SCALE_OFFSET <= 0.0625) {
       return
@@ -50,8 +48,6 @@ function keyPressed() {
     }
     planet_data.MANUAL_SCALE_OFFSET *= MANUAL_SCALE_FACTOR
   }
-
-  console.log("Now Offset: ", planet_data.MANUAL_SCALE_OFFSET)
 }
 
 function update() {
