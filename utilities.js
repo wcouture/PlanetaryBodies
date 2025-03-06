@@ -34,6 +34,7 @@ function init_body_facts() {
     body_facts["Mercury"]["Classification:"] = "Terrestrial"
     body_facts["Mercury"]["Mass:"] = "3.3011 * 10^23 kg"
     body_facts["Mercury"]["Equitorial Radius:"] = '2,438.7 km'
+    body_facts["Mercury"]["Axial Tilt:"] = '0.034 degrees'
     body_facts["Mercury"]["Aphelion:"] = '69,820,000 km'
     body_facts["Mercury"]["Perihelion:"] = '46,000,000 km'
     body_facts["Mercury"]["Semi-major Axis:"] = '57,910,000 km'
@@ -47,6 +48,7 @@ function init_body_facts() {
     body_facts["Venus"]["Classification:"] = "Terrestrial"
     body_facts["Venus"]["Mass:"] = "4.8675 * 10^24 kg"
     body_facts["Venus"]["Equitorial Radius:"] = '6,051.8 km'
+    body_facts["Venus"]["Axial Tilt:"] = '2.64 degrees (for retrograde rotation) 177.36 degrees (to orbit)'
     body_facts["Venus"]["Aphelion:"] = '108,940,000 km'
     body_facts["Venus"]["Perihelion:"] = '107,480,000 km'
     body_facts["Venus"]["Semi-major Axis:"] = '108,210,000 km'
@@ -60,6 +62,7 @@ function init_body_facts() {
     body_facts["Earth"]["Classification:"] = "Terrestrial"
     body_facts["Earth"]["Mass:"] = "5.972168 * 10^24 kg"
     body_facts["Earth"]["Equitorial Radius:"] = '6,378.137 km'
+    body_facts["Earth"]["Axial Tilt:"] = '23.4392811 degrees'
     body_facts["Earth"]["Aphelion:"] = '152,097,597 km'
     body_facts["Earth"]["Perihelion:"] = '147,098,450 km'
     body_facts["Earth"]["Semi-major Axis:"] = '149,598,023 km'
@@ -73,6 +76,7 @@ function init_body_facts() {
     body_facts["Mars"]["Classification:"] = "Terrestrial"
     body_facts["Mars"]["Mass:"] = "6.4171 * 10^23 kg"
     body_facts["Mars"]["Equitorial Radius:"] = '3,396.2 km'
+    body_facts["Mars"]["Axial Tilt:"] = '25.19 degrees'
     body_facts["Mars"]["Aphelion:"] = '249,261,000 km'
     body_facts["Mars"]["Perihelion:"] = '206,650,000 km'
     body_facts["Mars"]["Semi-major Axis:"] = '227,939,366 km'
@@ -86,6 +90,7 @@ function init_body_facts() {
     body_facts["Jupiter"]["Classification:"] = "Gas Giant"
     body_facts["Jupiter"]["Mass:"] = "1.8982 * 10^27 kg"
     body_facts["Jupiter"]["Equitorial Radius:"] = '71,492 km'
+    body_facts["Jupiter"]["Axial Tilt:"] = '3.13 degrees'
     body_facts["Jupiter"]["Aphelion:"] = '816,363,000 km'
     body_facts["Jupiter"]["Perihelion:"] = '740,595,000 km'
     body_facts["Jupiter"]["Semi-major Axis:"] = '778,479,000 km'
@@ -99,6 +104,7 @@ function init_body_facts() {
     body_facts["Saturn"]["Classification:"] = "Gas Giant"
     body_facts["Saturn"]["Mass:"] = "5.6834 * 10^26 kg"
     body_facts["Saturn"]["Equitorial Radius:"] = '60,268 km'
+    body_facts["Saturn"]["Axial Tilt:"] = '26.73 degrees'
     body_facts["Saturn"]["Aphelion:"] = '1,514,500,000 km'
     body_facts["Saturn"]["Perihelion:"] = '1,353,550,000 km'
     body_facts["Saturn"]["Semi-major Axis:"] = '1,433,530,000 km'
@@ -112,6 +118,7 @@ function init_body_facts() {
     body_facts["Uranus"]["Classification:"] = "Ice Giant"
     body_facts["Uranus"]["Mass:"] = "8.681 * 10^25 kg"
     body_facts["Uranus"]["Equitorial Radius:"] = '25,559 km'
+    body_facts["Uranus"]["Axial Tilt:"] = '82.23 degrees (retrograde, to orbit) 97.77 degrees (prograde)'
     body_facts["Uranus"]["Aphelion:"] = '3,006,390,000 km'
     body_facts["Uranus"]["Perihelion:"] = '2,735,560,000 km'
     body_facts["Uranus"]["Semi-major Axis:"] = '2,870,972,000 km'
@@ -125,6 +132,7 @@ function init_body_facts() {
     body_facts["Neptune"]["Classification:"] = "Ice Giant"
     body_facts["Neptune"]["Mass:"] = "1.02409 * 10^26 kg"
     body_facts["Neptune"]["Equitorial Radius:"] = '24,764 km'
+    body_facts["Neptune"]["Axial Tilt:"] = '28.32 degrees'
     body_facts["Neptune"]["Aphelion:"] = '4,540,000,000 km'
     body_facts["Neptune"]["Perihelion:"] = '4,460,000,000 km'
     body_facts["Neptune"]["Semi-major Axis:"] = '4,500,000,000 km'
@@ -138,6 +146,7 @@ function init_body_facts() {
     body_facts["Moon"]["Names:"] = "Moon, Luna, Selene, Cynthia"
     body_facts["Moon"]["Mass:"] = "7.346 * 10^22 kg"
     body_facts["Moon"]["Mean Radius:"] = '1,738.1 km'
+    body_facts["Moon"]["Axial Tilt:"] = '6.687 degrees'
     body_facts["Moon"]["Apogee:"] = '405,400 km'
     body_facts["Moon"]["Perigee:"] = '362,600 km'
     body_facts["Moon"]["Semi-major Axis:"] = '384,399 km'
@@ -151,6 +160,7 @@ function init_body_facts() {
     body_facts["Deimos"]["Names:"] = "Deimos"
     body_facts["Deimos"]["Mass:"] = "1.51 * 10^15 kg"
     body_facts["Deimos"]["Mean Radius:"] = '6.27 km'
+    body_facts["Deimos"]["Axial Tilt:"] = '0 degrees'
     body_facts["Deimos"]["Apoapsis:"] = '23,455.5 km'
     body_facts["Deimos"]["Periapsis:"] = '23,470.9 km'
     body_facts["Deimos"]["Semi-major Axis:"] = '23,463.2 km'
@@ -162,6 +172,7 @@ function init_body_facts() {
     body_facts["Phobos"]["Names:"] = "Phobos"
     body_facts["Phobos"]["Mass:"] = "1.060 * 10^16 kg"
     body_facts["Phobos"]["Mean Radius:"] = '11.08 km'
+    body_facts["Phobos"]["Axial Tilt:"] = '0 degrees'
     body_facts["Phobos"]["Apoapsis:"] = '9,517.58 km'
     body_facts["Phobos"]["Periapsis:"] = '9,234.42 km'
     body_facts["Phobos"]["Semi-major Axis:"] = '9,376 km'
