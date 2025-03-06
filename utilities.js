@@ -160,7 +160,6 @@ function init_body_facts() {
     body_facts["Deimos"]["Names:"] = "Deimos"
     body_facts["Deimos"]["Mass:"] = "1.51 * 10^15 kg"
     body_facts["Deimos"]["Mean Radius:"] = '6.27 km'
-    body_facts["Deimos"]["Axial Tilt:"] = '0 degrees'
     body_facts["Deimos"]["Apoapsis:"] = '23,455.5 km'
     body_facts["Deimos"]["Periapsis:"] = '23,470.9 km'
     body_facts["Deimos"]["Semi-major Axis:"] = '23,463.2 km'
@@ -172,7 +171,6 @@ function init_body_facts() {
     body_facts["Phobos"]["Names:"] = "Phobos"
     body_facts["Phobos"]["Mass:"] = "1.060 * 10^16 kg"
     body_facts["Phobos"]["Mean Radius:"] = '11.08 km'
-    body_facts["Phobos"]["Axial Tilt:"] = '0 degrees'
     body_facts["Phobos"]["Apoapsis:"] = '9,517.58 km'
     body_facts["Phobos"]["Periapsis:"] = '9,234.42 km'
     body_facts["Phobos"]["Semi-major Axis:"] = '9,376 km'
