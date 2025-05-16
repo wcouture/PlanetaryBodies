@@ -628,7 +628,7 @@ function draw_body(body) {
           (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET);
       }
       stroke(40);
-      strokeWeight(2);
+      strokeWeight(3);
       noFill();
       curveVertex(pos_x, pos_y);
     });
