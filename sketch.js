@@ -1,52 +1,53 @@
 const SCREEN_WIDTH = innerWidth;
 const SCREEN_HEIGHT = innerHeight;
-const MANUAL_SCALE_FACTOR = 1.25
+const MANUAL_SCALE_FACTOR = 1.25;
 
 let APP_FONT;
 
 var DRAW_SCALE = 1100000000;
 
 function preload() {
-  APP_FONT = loadFont('/assets/fonts/Mulish-Black.ttf')
+  APP_FONT = loadFont("/assets/fonts/Mulish-Black.ttf");
 }
 
 function setup() {
-  strokeWeight(5)
-  textFont(APP_FONT)
+  strokeWeight(5);
+  textFont(APP_FONT);
 
-  init_sun()
+  init_sun();
   init_planets();
-  init_body_facts()
+  init_body_facts();
 
   createCanvas(SCREEN_WIDTH, SCREEN_HEIGHT);
-  deselect_planets()
-  noSmooth()
+  deselect_planets();
+  noSmooth();
+
+  for (let i = 0; i < 3; i++) {
+    planet_data.MANUAL_SCALE_OFFSET /= MANUAL_SCALE_FACTOR;
+  }
 }
 
 function mouseClicked() {
-  if (UTIL.processing)
-    return
+  if (UTIL.processing) return;
 
   if (planet_data.hovered_planet != null) {
     select_planet(planet_data.hovered_planet.name);
-  }
-  else {
+  } else {
     deselect_planets();
   }
 }
 
 function keyPressed() {
-  if (keyCode === UP_ARROW || key == 'w') {
+  if (keyCode === UP_ARROW || key == "w") {
     if (planet_data.MANUAL_SCALE_OFFSET <= 0.0625) {
-      return
+      return;
     }
-    planet_data.MANUAL_SCALE_OFFSET /= MANUAL_SCALE_FACTOR
-  }
-  else if (keyCode === DOWN_ARROW || key == 's') {
+    planet_data.MANUAL_SCALE_OFFSET /= MANUAL_SCALE_FACTOR;
+  } else if (keyCode === DOWN_ARROW || key == "s") {
     if (planet_data.MANUAL_SCALE_OFFSET >= 4) {
-      return
+      return;
     }
-    planet_data.MANUAL_SCALE_OFFSET *= MANUAL_SCALE_FACTOR
+    planet_data.MANUAL_SCALE_OFFSET *= MANUAL_SCALE_FACTOR;
   }
 }
 
@@ -62,7 +63,7 @@ function draw() {
   center_screen();
 
   // Draw space background
-  draw_background()
+  draw_background();
   // Draw planets
   draw_planets();
   draw_hover_details();
