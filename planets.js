@@ -27,7 +27,7 @@ function init_stars() {
 
 // Initializes scalar variables used in drawing and updating planets
 function init_scalars() {
-  planet_data.MANUAL_SCALE_OFFSET = 2;
+  planet_data.MANUAL_SCALE_OFFSET = 0.64;
   planet_data.DRAW_SCALE = 800000000;
   planet_data.SPEED_SCALE = 1000;
   planet_data.UPDATE_ITERATIONS = 1;
