@@ -1,11 +1,8 @@
-
-
 # <img src="assets/readme-images/earth-png.webp" style="margin-left: auto; width: 100px; "> SolarSim
 
-In SolarSim, explore our solar system and many of the planets' major moons; all simulated using Netownian physics!
+In SolarSim, explore our solar system and many of the planets' major moons; all simulated using Newtonian physics!
 
 ## Features
-
 
 <table>
     <tr style="border-width: 0">
@@ -53,42 +50,54 @@ In SolarSim, explore our solar system and many of the planets' major moons; all 
 ## Installation
 
 ### Dependecies
-* [Apache](https://httpd.apache.org/) (Webserver)
+
+- [Apache](https://httpd.apache.org/) (Webserver)
 
 ### Clone the repository
+
 ```bash
 git clone https://github.com/wcouture/PlanetaryBodies.git
 ```
 
-### Configure Apache 
+### Configure Apache
+
 Modify the <i>httpd.conf</i> apache configuration file to set the root directory to the cloned respository. ("{<i>PATH_TO_CLONED_REPOSITORY</i>}/PlanetaryBodies/")<br>
 
 <i>If installed through a package manager, httpd.conf will likely be in one of the following locations:</i>
-* /etc/apache2/httpd.conf
-* /etc/apache2/apache2.conf
-* /etc/httpd/httpd.conf
-* /etc/httpd/conf/httpd.conf
+
+- /etc/apache2/httpd.conf
+- /etc/apache2/apache2.conf
+- /etc/httpd/httpd.conf
+- /etc/httpd/conf/httpd.conf
 
 Additionally configure your domain name within httpd.conf and SSL certificates within ssl.conf, located within the conf.d directory within the httpd or apache2 directory, if desired.
 
 ### Start Apache Server
+
 <i>The following commands demonstrate how to start, stop, and restart the webserver on a linux distribution.</i><br>
 
 Start:
+
 ```bash
 sudo systemctl start httpd
 ```
+
 Stop:
+
 ```bash
 sudo systemctl stop httpd
 ```
+
 Restart:
+
 ```bash
 sudo systemctl restart httpd
 ```
 
 ## Usage
+
 Navigate to http(s)://localhost or http(s)://{YOUR_DOMAIN} if a domain is configured to access the webapp.
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
