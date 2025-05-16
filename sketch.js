@@ -21,8 +21,6 @@ function setup() {
   createCanvas(SCREEN_WIDTH, SCREEN_HEIGHT);
   deselect_planets();
   noSmooth();
-
-  planet_data.MANUAL_SCALE_FACTOR = 0.32768;
 }
 
 function mouseClicked() {

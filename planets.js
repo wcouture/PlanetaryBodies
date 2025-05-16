@@ -27,7 +27,7 @@ function init_stars() {
 
 // Initializes scalar variables used in drawing and updating planets
 function init_scalars() {
-  planet_data.MANUAL_SCALE_OFFSET = 1;
+  planet_data.MANUAL_SCALE_OFFSET = 0.4096;
   planet_data.DRAW_SCALE = 800000000;
   planet_data.SPEED_SCALE = 1000;
   planet_data.UPDATE_ITERATIONS = 1;
@@ -628,7 +628,7 @@ function draw_body(body) {
           (planet_data.DRAW_SCALE * planet_data.MANUAL_SCALE_OFFSET);
       }
       stroke(40);
-      strokeWeight(3);
+      strokeWeight(2);
       noFill();
       curveVertex(pos_x, pos_y);
     });
