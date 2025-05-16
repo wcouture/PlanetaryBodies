@@ -22,9 +22,7 @@ function setup() {
   deselect_planets();
   noSmooth();
 
-  for (let i = 0; i < 3; i++) {
-    planet_data.MANUAL_SCALE_OFFSET /= MANUAL_SCALE_FACTOR;
-  }
+  planet_data.MANUAL_SCALE_FACTOR = 0.32768;
 }
 
 function mouseClicked() {
@@ -69,5 +67,5 @@ function draw() {
   draw_hover_details();
   draw_focus_details();
   draw_zoom_info_label();
-  // display_fps()
+  display_fps();
 }
