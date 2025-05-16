@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>SolarSim</title>
-    <link rel="icon" type="image/x-icon" href="/assets/earth-png.webp">
+    <link rel="icon" type="image/x-icon" href="/assets/readme-images/earth-png.webp">
 
     <link rel="stylesheet" type="text/css" href="style.css">
 
